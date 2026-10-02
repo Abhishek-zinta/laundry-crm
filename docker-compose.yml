@@ -1,0 +1,39 @@
+# Local infrastructure for RinseOps.
+# Postgres is exposed on 5433 so it does not clash with a system Postgres on 5432.
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: rinseops-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: rinseops
+      POSTGRES_PASSWORD: rinseops
+      POSTGRES_DB: rinseops
+    ports:
+      - "5433:5432"
+    volumes:
+      - rinseops-pg:/var/lib/postgresql/data
+      - ./infra/postgres/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U rinseops -d rinseops"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    container_name: rinseops-redis
+    restart: unless-stopped
+    ports:
+      - "6380:6379"
+    volumes:
+      - rinseops-redis:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  rinseops-pg:
+  rinseops-redis:

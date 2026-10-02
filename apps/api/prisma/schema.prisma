@@ -1,0 +1,817 @@
+// RinseOps database schema.
+// Conventions:
+//  - UUID primary keys; human-readable numbers (order/tag codes) are separate unique columns.
+//  - Every business-owned table carries tenantId and is indexed by it.
+//  - Money is DECIMAL(12,2); never floats.
+//  - Timestamps are stored in UTC (timestamptz).
+//  - Business records (orders, payments, customers) are never hard-deleted.
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["postgresqlExtensions"]
+}
+
+datasource db {
+  provider   = "postgresql"
+  url        = env("DATABASE_URL")
+  extensions = [pg_trgm]
+}
+
+// ---------------------------------------------------------------------------
+// Enums (kept in sync with packages/shared/src/enums.ts)
+// ---------------------------------------------------------------------------
+
+enum Role {
+  OWNER
+  MANAGER
+  COUNTER_STAFF
+  PROCESSING_STAFF
+  DRIVER
+}
+
+enum UserStatus {
+  ACTIVE
+  INACTIVE
+}
+
+enum TenantStatus {
+  ACTIVE
+  SUSPENDED
+}
+
+enum UnitType {
+  PIECE
+  KG
+  PAIR
+}
+
+enum ModifierType {
+  PERCENT
+  FIXED
+}
+
+enum DiscountType {
+  PERCENT
+  FIXED
+}
+
+enum OrderStatus {
+  RECEIVED
+  PROCESSING
+  QUALITY_CHECK
+  READY
+  DELIVERED
+  CANCELLED
+}
+
+enum OrderPaymentStatus {
+  UNPAID
+  PARTIAL
+  PAID
+}
+
+enum DeliveryMode {
+  STORE_PICKUP
+  HOME_DELIVERY
+}
+
+enum PaymentMethod {
+  CASH
+  CARD
+  UPI
+  BANK_TRANSFER
+  OTHER
+}
+
+enum PaymentStatus {
+  PENDING
+  COMPLETED
+  FAILED
+  REFUNDED
+}
+
+enum TaskType {
+  PICKUP
+  DELIVERY
+}
+
+enum TaskStatus {
+  SCHEDULED
+  ASSIGNED
+  OUT_FOR_PICKUP
+  PICKED_UP
+  OUT_FOR_DELIVERY
+  DELIVERED
+  FAILED
+  CANCELLED
+}
+
+enum TaskSource {
+  STAFF
+  PUBLIC_BOOKING
+}
+
+enum GarmentIssue {
+  EXISTING_DAMAGE
+  STAIN
+  TEAR
+  MISSING_BUTTON
+  COLOR_BLEED_RISK
+  DELICATE
+  SHRINK_RISK
+  FADED
+  COLLAR_WEAR
+}
+
+enum RackRemovalReason {
+  MOVED
+  DELIVERED
+  REMOVED
+  CANCELLED
+}
+
+// ---------------------------------------------------------------------------
+// Tenancy, stores, users
+// ---------------------------------------------------------------------------
+
+model Tenant {
+  id        String       @id @default(uuid()) @db.Uuid
+  name      String
+  slug      String       @unique
+  logoUrl   String?
+  phone     String?
+  email     String?
+  address   String?
+  status    TenantStatus @default(ACTIVE)
+  createdAt DateTime     @default(now()) @db.Timestamptz(3)
+  updatedAt DateTime     @updatedAt @db.Timestamptz(3)
+
+  settings          TenantSettings?
+  stores            Store[]
+  users             User[]
+  customers         Customer[]
+  customerAddresses CustomerAddress[]
+  serviceCategories ServiceCategory[]
+  serviceItems      ServiceItem[]
+  priceLists        PriceList[]
+  priceListItems    PriceListItem[]
+  modifiers         ServiceModifier[]
+  orders            Order[]
+  orderLines        OrderLine[]
+  orderLineMods     OrderLineModifier[]
+  garments          GarmentUnit[]
+  garmentHistory    GarmentStatusHistory[]
+  garmentPhotos     GarmentPhoto[]
+  statusHistory     OrderStatusHistory[]
+  payments          Payment[]
+  racks             Rack[]
+  rackSlots         RackSlot[]
+  rackAssignments   RackAssignment[]
+  tasks             PickupDeliveryTask[]
+  auditLogs         AuditLog[]
+  counters          TenantCounter[]
+}
+
+model TenantSettings {
+  tenantId               String   @id @db.Uuid
+  currency               String   @default("INR") @db.VarChar(3)
+  locale                 String   @default("en-IN")
+  timezone               String   @default("Asia/Kolkata")
+  brandColor             String   @default("#0f766e")
+  taxName                String   @default("GST")
+  taxRate                Decimal  @default(0) @db.Decimal(5, 2)
+  taxInclusive           Boolean  @default(false)
+  taxNumber              String?
+  orderPrefix            String   @default("RO")
+  invoicePrefix          String   @default("INV")
+  garmentPrefix          String   @default("GAR")
+  receiptFooter          String?
+  defaultTurnaroundHours Int      @default(48)
+  skipQualityCheck       Boolean  @default(false)
+  bookingEnabled         Boolean  @default(true)
+  timeSlots              String[] @default([])
+  defaultPriceListId     String?  @db.Uuid
+  updatedAt              DateTime @updatedAt @db.Timestamptz(3)
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+}
+
+/// Atomic per-tenant sequences (order numbers per year, garment tags).
+model TenantCounter {
+  tenantId String @db.Uuid
+  key      String
+  value    Int    @default(0)
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  @@id([tenantId, key])
+}
+
+model Store {
+  id        String   @id @default(uuid()) @db.Uuid
+  tenantId  String   @db.Uuid
+  name      String
+  code      String
+  phone     String?
+  address   String?
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt DateTime @updatedAt @db.Timestamptz(3)
+
+  tenant     Tenant               @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  users      UserStore[]
+  orders     Order[]
+  payments   Payment[]
+  racks      Rack[]
+  tasks      PickupDeliveryTask[]
+  priceLists PriceList[]
+
+  @@unique([tenantId, code])
+  @@index([tenantId])
+}
+
+model User {
+  id           String     @id @default(uuid()) @db.Uuid
+  tenantId     String     @db.Uuid
+  name         String
+  email        String     @unique
+  phone        String?
+  passwordHash String
+  role         Role
+  status       UserStatus @default(ACTIVE)
+  lastLoginAt  DateTime?  @db.Timestamptz(3)
+  createdAt    DateTime   @default(now()) @db.Timestamptz(3)
+  updatedAt    DateTime   @updatedAt @db.Timestamptz(3)
+
+  tenant            Tenant                 @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  stores            UserStore[]
+  sessions          Session[]
+  ordersCreated     Order[]                @relation("OrderCreatedBy")
+  statusChanges     OrderStatusHistory[]
+  garmentChanges    GarmentStatusHistory[]
+  paymentsReceived  Payment[]              @relation("PaymentReceivedBy")
+  paymentsRefunded  Payment[]              @relation("PaymentRefundedBy")
+  rackAssignments   RackAssignment[]       @relation("RackAssignedBy")
+  rackRemovals      RackAssignment[]       @relation("RackRemovedBy")
+  tasksAssigned     PickupDeliveryTask[]   @relation("TaskDriver")
+  tasksCreated      PickupDeliveryTask[]   @relation("TaskCreatedBy")
+  auditLogs         AuditLog[]
+
+  @@index([tenantId])
+  @@index([tenantId, role])
+}
+
+/// Store assignment for staff. Owners implicitly access every store.
+model UserStore {
+  userId  String @db.Uuid
+  storeId String @db.Uuid
+
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  store Store @relation(fields: [storeId], references: [id], onDelete: Cascade)
+
+  @@id([userId, storeId])
+  @@index([storeId])
+}
+
+/// Server-side sessions. The cookie holds a random token; only its SHA-256 hash is stored.
+model Session {
+  id         String    @id @default(uuid()) @db.Uuid
+  userId     String    @db.Uuid
+  tokenHash  String    @unique
+  expiresAt  DateTime  @db.Timestamptz(3)
+  lastSeenAt DateTime  @default(now()) @db.Timestamptz(3)
+  revokedAt  DateTime? @db.Timestamptz(3)
+  ipAddress  String?
+  userAgent  String?
+  createdAt  DateTime  @default(now()) @db.Timestamptz(3)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+// ---------------------------------------------------------------------------
+// Customers
+// ---------------------------------------------------------------------------
+
+model Customer {
+  id             String    @id @default(uuid()) @db.Uuid
+  tenantId       String    @db.Uuid
+  firstName      String
+  lastName       String?
+  /// Normalised: digits with optional leading "+".
+  phone          String
+  alternatePhone String?
+  email          String?
+  notes          String?
+  priceListId    String?   @db.Uuid
+  archivedAt     DateTime? @db.Timestamptz(3)
+  createdAt      DateTime  @default(now()) @db.Timestamptz(3)
+  updatedAt      DateTime  @updatedAt @db.Timestamptz(3)
+
+  tenant    Tenant               @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  priceList PriceList?           @relation(fields: [priceListId], references: [id], onDelete: SetNull)
+  addresses CustomerAddress[]
+  orders    Order[]
+  payments  Payment[]
+  tasks     PickupDeliveryTask[]
+
+  @@unique([tenantId, phone])
+  @@index([tenantId, createdAt])
+  @@index([phone(ops: raw("gin_trgm_ops"))], type: Gin, map: "Customer_phone_trgm_idx")
+  @@index([firstName(ops: raw("gin_trgm_ops"))], type: Gin, map: "Customer_firstName_trgm_idx")
+  @@index([lastName(ops: raw("gin_trgm_ops"))], type: Gin, map: "Customer_lastName_trgm_idx")
+}
+
+model CustomerAddress {
+  id           String   @id @default(uuid()) @db.Uuid
+  tenantId     String   @db.Uuid
+  customerId   String   @db.Uuid
+  label        String   @default("Home")
+  addressLine1 String
+  addressLine2 String?
+  landmark     String?
+  city         String?
+  state        String?
+  postalCode   String?
+  country      String?
+  latitude     Decimal? @db.Decimal(9, 6)
+  longitude    Decimal? @db.Decimal(9, 6)
+  isDefault    Boolean  @default(false)
+  createdAt    DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt    DateTime @updatedAt @db.Timestamptz(3)
+
+  tenant   Tenant               @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  customer Customer             @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  orders   Order[]
+  tasks    PickupDeliveryTask[]
+
+  @@index([tenantId, customerId])
+}
+
+// ---------------------------------------------------------------------------
+// Catalog & pricing
+// ---------------------------------------------------------------------------
+
+model ServiceCategory {
+  id           String   @id @default(uuid()) @db.Uuid
+  tenantId     String   @db.Uuid
+  name         String
+  code         String
+  description  String?
+  color        String?
+  displayOrder Int      @default(0)
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt    DateTime @updatedAt @db.Timestamptz(3)
+
+  tenant         Tenant          @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  priceListItems PriceListItem[]
+  orderLines     OrderLine[]
+
+  @@unique([tenantId, code])
+  @@index([tenantId, displayOrder])
+}
+
+/// A garment/product type such as Shirt, Saree or Blanket.
+model ServiceItem {
+  id            String   @id @default(uuid()) @db.Uuid
+  tenantId      String   @db.Uuid
+  name          String
+  unitType      UnitType @default(PIECE)
+  piecesPerUnit Int      @default(1)
+  /// Illustration key shown on POS tiles (e.g. "shirt", "saree"); inferred from the name when empty.
+  icon          String?
+  displayOrder  Int      @default(0)
+  isActive      Boolean  @default(true)
+  createdAt     DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt     DateTime @updatedAt @db.Timestamptz(3)
+
+  tenant         Tenant          @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  priceListItems PriceListItem[]
+  orderLines     OrderLine[]
+
+  @@unique([tenantId, name])
+  @@index([tenantId, displayOrder])
+}
+
+model PriceList {
+  id          String   @id @default(uuid()) @db.Uuid
+  tenantId    String   @db.Uuid
+  name        String
+  description String?
+  /// Optional: restrict a list to one store (store-specific pricing).
+  storeId     String?  @db.Uuid
+  isDefault   Boolean  @default(false)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt   DateTime @updatedAt @db.Timestamptz(3)
+
+  tenant    Tenant          @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  store     Store?          @relation(fields: [storeId], references: [id], onDelete: SetNull)
+  items     PriceListItem[]
+  customers Customer[]
+  orders    Order[]
+
+  @@unique([tenantId, name])
+  @@index([tenantId])
+}
+
+model PriceListItem {
+  id                String   @id @default(uuid()) @db.Uuid
+  tenantId          String   @db.Uuid
+  priceListId       String   @db.Uuid
+  serviceCategoryId String   @db.Uuid
+  serviceItemId     String   @db.Uuid
+  price             Decimal  @db.Decimal(12, 2)
+  isActive          Boolean  @default(true)
+  createdAt         DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt         DateTime @updatedAt @db.Timestamptz(3)
+
+  tenant          Tenant          @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  priceList       PriceList       @relation(fields: [priceListId], references: [id], onDelete: Cascade)
+  serviceCategory ServiceCategory @relation(fields: [serviceCategoryId], references: [id], onDelete: Cascade)
+  serviceItem     ServiceItem     @relation(fields: [serviceItemId], references: [id], onDelete: Cascade)
+
+  @@unique([priceListId, serviceCategoryId, serviceItemId])
+  @@index([tenantId])
+}
+
+/// Optional add-ons such as Express Service or Stain Treatment.
+model ServiceModifier {
+  id           String       @id @default(uuid()) @db.Uuid
+  tenantId     String       @db.Uuid
+  name         String
+  type         ModifierType
+  /// Percent of line base amount, or a fixed amount per unit.
+  value        Decimal      @db.Decimal(12, 2)
+  displayOrder Int          @default(0)
+  isActive     Boolean      @default(true)
+  createdAt    DateTime     @default(now()) @db.Timestamptz(3)
+  updatedAt    DateTime     @updatedAt @db.Timestamptz(3)
+
+  tenant        Tenant              @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  lineModifiers OrderLineModifier[]
+
+  @@unique([tenantId, name])
+}
+
+// ---------------------------------------------------------------------------
+// Orders
+// ---------------------------------------------------------------------------
+
+model Order {
+  id                String             @id @default(uuid()) @db.Uuid
+  tenantId          String             @db.Uuid
+  storeId           String             @db.Uuid
+  customerId        String             @db.Uuid
+  orderNumber       String
+  status            OrderStatus        @default(RECEIVED)
+  priceListId       String?            @db.Uuid
+  subtotal          Decimal            @db.Decimal(12, 2)
+  discountType      DiscountType?
+  discountValue     Decimal?           @db.Decimal(12, 2)
+  discountAmount    Decimal            @default(0) @db.Decimal(12, 2)
+  taxName           String?
+  taxRate           Decimal            @default(0) @db.Decimal(5, 2)
+  taxInclusive      Boolean            @default(false)
+  taxAmount         Decimal            @default(0) @db.Decimal(12, 2)
+  grandTotal        Decimal            @db.Decimal(12, 2)
+  /// Cached from COMPLETED payments; recomputed in the same transaction as any payment change.
+  paidAmount        Decimal            @default(0) @db.Decimal(12, 2)
+  /// Cached grandTotal - paidAmount, kept for fast filtering/sorting.
+  balanceDue        Decimal            @db.Decimal(12, 2)
+  paymentStatus     OrderPaymentStatus @default(UNPAID)
+  totalPieces       Int                @default(0)
+  dueDate           DateTime           @db.Timestamptz(3)
+  deliveryMode      DeliveryMode       @default(STORE_PICKUP)
+  deliveryAddressId String?            @db.Uuid
+  notes             String?
+  createdById       String?            @db.Uuid
+  readyAt           DateTime?          @db.Timestamptz(3)
+  deliveredAt       DateTime?          @db.Timestamptz(3)
+  cancelledAt       DateTime?          @db.Timestamptz(3)
+  cancelReason      String?
+  idempotencyKey    String?
+  createdAt         DateTime           @default(now()) @db.Timestamptz(3)
+  updatedAt         DateTime           @updatedAt @db.Timestamptz(3)
+
+  tenant          Tenant               @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  store           Store                @relation(fields: [storeId], references: [id])
+  customer        Customer             @relation(fields: [customerId], references: [id])
+  priceList       PriceList?           @relation(fields: [priceListId], references: [id], onDelete: SetNull)
+  deliveryAddress CustomerAddress?     @relation(fields: [deliveryAddressId], references: [id], onDelete: SetNull)
+  createdBy       User?                @relation("OrderCreatedBy", fields: [createdById], references: [id], onDelete: SetNull)
+  lines           OrderLine[]
+  garments        GarmentUnit[]
+  statusHistory   OrderStatusHistory[]
+  payments        Payment[]
+  rackAssignments RackAssignment[]
+  tasks           PickupDeliveryTask[]
+
+  @@unique([tenantId, orderNumber])
+  @@unique([tenantId, idempotencyKey])
+  @@index([tenantId, status])
+  @@index([tenantId, dueDate])
+  @@index([tenantId, createdAt])
+  @@index([tenantId, customerId])
+  @@index([tenantId, storeId, createdAt])
+  @@index([tenantId, paymentStatus])
+}
+
+model OrderLine {
+  id                String   @id @default(uuid()) @db.Uuid
+  tenantId          String   @db.Uuid
+  orderId           String   @db.Uuid
+  serviceCategoryId String   @db.Uuid
+  serviceItemId     String   @db.Uuid
+  /// Snapshot so receipts stay correct if the catalog changes later.
+  description       String
+  categoryName      String
+  itemName          String
+  unitType          UnitType
+  quantity          Decimal  @db.Decimal(10, 3)
+  unitPrice         Decimal  @db.Decimal(12, 2)
+  modifiersAmount   Decimal  @default(0) @db.Decimal(12, 2)
+  lineTotal         Decimal  @db.Decimal(12, 2)
+  notes             String?
+  position          Int      @default(0)
+  createdAt         DateTime @default(now()) @db.Timestamptz(3)
+
+  tenant          Tenant              @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  order           Order               @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  serviceCategory ServiceCategory     @relation(fields: [serviceCategoryId], references: [id])
+  serviceItem     ServiceItem         @relation(fields: [serviceItemId], references: [id])
+  modifiers       OrderLineModifier[]
+  garments        GarmentUnit[]
+
+  @@index([tenantId, orderId])
+  @@index([tenantId, serviceCategoryId])
+  @@index([tenantId, serviceItemId])
+}
+
+model OrderLineModifier {
+  id          String       @id @default(uuid()) @db.Uuid
+  tenantId    String       @db.Uuid
+  orderLineId String       @db.Uuid
+  modifierId  String?      @db.Uuid
+  name        String
+  type        ModifierType
+  value       Decimal      @db.Decimal(12, 2)
+  amount      Decimal      @db.Decimal(12, 2)
+
+  tenant    Tenant           @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  orderLine OrderLine        @relation(fields: [orderLineId], references: [id], onDelete: Cascade)
+  modifier  ServiceModifier? @relation(fields: [modifierId], references: [id], onDelete: SetNull)
+
+  @@index([tenantId, orderLineId])
+}
+
+/// Append-only history of order status changes.
+model OrderStatusHistory {
+  id          String       @id @default(uuid()) @db.Uuid
+  tenantId    String       @db.Uuid
+  orderId     String       @db.Uuid
+  fromStatus  OrderStatus?
+  toStatus    OrderStatus
+  changedById String?      @db.Uuid
+  changedAt   DateTime     @default(now()) @db.Timestamptz(3)
+  note        String?
+
+  tenant    Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  order     Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  changedBy User?  @relation(fields: [changedById], references: [id], onDelete: SetNull)
+
+  @@index([tenantId, orderId, changedAt])
+  @@index([tenantId, changedAt])
+}
+
+// ---------------------------------------------------------------------------
+// Garments
+// ---------------------------------------------------------------------------
+
+model GarmentUnit {
+  id                  String         @id @default(uuid()) @db.Uuid
+  tenantId            String         @db.Uuid
+  orderId             String         @db.Uuid
+  orderLineId         String         @db.Uuid
+  tagCode             String
+  status              OrderStatus    @default(RECEIVED)
+  color               String?
+  brand               String?
+  fabric              String?
+  issues              GarmentIssue[] @default([])
+  damageNotes         String?
+  specialInstructions String?
+  createdAt           DateTime       @default(now()) @db.Timestamptz(3)
+  updatedAt           DateTime       @updatedAt @db.Timestamptz(3)
+
+  tenant    Tenant                 @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  order     Order                  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  orderLine OrderLine              @relation(fields: [orderLineId], references: [id], onDelete: Cascade)
+  history   GarmentStatusHistory[]
+  photos    GarmentPhoto[]
+
+  @@unique([tenantId, tagCode])
+  @@index([tenantId, orderId])
+  @@index([tenantId, status])
+}
+
+model GarmentStatusHistory {
+  id          String       @id @default(uuid()) @db.Uuid
+  tenantId    String       @db.Uuid
+  garmentId   String       @db.Uuid
+  fromStatus  OrderStatus?
+  toStatus    OrderStatus
+  changedById String?      @db.Uuid
+  changedAt   DateTime     @default(now()) @db.Timestamptz(3)
+  note        String?
+
+  tenant    Tenant      @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  garment   GarmentUnit @relation(fields: [garmentId], references: [id], onDelete: Cascade)
+  changedBy User?       @relation(fields: [changedById], references: [id], onDelete: SetNull)
+
+  @@index([tenantId, garmentId, changedAt])
+}
+
+/// Reserved for future photo capture at intake (not used by the MVP UI).
+model GarmentPhoto {
+  id         String   @id @default(uuid()) @db.Uuid
+  tenantId   String   @db.Uuid
+  garmentId  String   @db.Uuid
+  url        String
+  caption    String?
+  createdAt  DateTime @default(now()) @db.Timestamptz(3)
+
+  tenant  Tenant      @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  garment GarmentUnit @relation(fields: [garmentId], references: [id], onDelete: Cascade)
+
+  @@index([tenantId, garmentId])
+}
+
+// ---------------------------------------------------------------------------
+// Payments
+// ---------------------------------------------------------------------------
+
+model Payment {
+  id             String        @id @default(uuid()) @db.Uuid
+  tenantId       String        @db.Uuid
+  orderId        String        @db.Uuid
+  storeId        String        @db.Uuid
+  customerId     String        @db.Uuid
+  amount         Decimal       @db.Decimal(12, 2)
+  method         PaymentMethod
+  reference      String?
+  notes          String?
+  status         PaymentStatus @default(COMPLETED)
+  receivedById   String?       @db.Uuid
+  receivedAt     DateTime      @default(now()) @db.Timestamptz(3)
+  refundedAt     DateTime?     @db.Timestamptz(3)
+  refundedById   String?       @db.Uuid
+  refundReason   String?
+  idempotencyKey String?
+  createdAt      DateTime      @default(now()) @db.Timestamptz(3)
+  updatedAt      DateTime      @updatedAt @db.Timestamptz(3)
+
+  tenant     Tenant   @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  order      Order    @relation(fields: [orderId], references: [id])
+  store      Store    @relation(fields: [storeId], references: [id])
+  customer   Customer @relation(fields: [customerId], references: [id])
+  receivedBy User?    @relation("PaymentReceivedBy", fields: [receivedById], references: [id], onDelete: SetNull)
+  refundedBy User?    @relation("PaymentRefundedBy", fields: [refundedById], references: [id], onDelete: SetNull)
+
+  @@unique([tenantId, idempotencyKey])
+  @@index([tenantId, receivedAt])
+  @@index([tenantId, orderId])
+  @@index([tenantId, customerId])
+  @@index([tenantId, storeId, receivedAt])
+}
+
+// ---------------------------------------------------------------------------
+// Racks
+// ---------------------------------------------------------------------------
+
+model Rack {
+  id           String   @id @default(uuid()) @db.Uuid
+  tenantId     String   @db.Uuid
+  storeId      String   @db.Uuid
+  name         String
+  code         String
+  description  String?
+  displayOrder Int      @default(0)
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt    DateTime @updatedAt @db.Timestamptz(3)
+
+  tenant Tenant     @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  store  Store      @relation(fields: [storeId], references: [id], onDelete: Cascade)
+  slots  RackSlot[]
+
+  @@unique([storeId, code])
+  @@index([tenantId, storeId])
+}
+
+model RackSlot {
+  id        String   @id @default(uuid()) @db.Uuid
+  tenantId  String   @db.Uuid
+  rackId    String   @db.Uuid
+  code      String
+  capacity  Int      @default(1)
+  position  Int      @default(0)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt DateTime @updatedAt @db.Timestamptz(3)
+
+  tenant      Tenant           @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  rack        Rack             @relation(fields: [rackId], references: [id], onDelete: Cascade)
+  assignments RackAssignment[]
+
+  @@unique([rackId, code])
+  @@index([tenantId, rackId])
+}
+
+/// Rack history: an assignment is "current" while removedAt is null.
+model RackAssignment {
+  id            String             @id @default(uuid()) @db.Uuid
+  tenantId      String             @db.Uuid
+  orderId       String             @db.Uuid
+  rackSlotId    String             @db.Uuid
+  assignedById  String?            @db.Uuid
+  assignedAt    DateTime           @default(now()) @db.Timestamptz(3)
+  removedAt     DateTime?          @db.Timestamptz(3)
+  removedById   String?            @db.Uuid
+  removalReason RackRemovalReason?
+  note          String?
+
+  tenant     Tenant   @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  order      Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  rackSlot   RackSlot @relation(fields: [rackSlotId], references: [id])
+  assignedBy User?    @relation("RackAssignedBy", fields: [assignedById], references: [id], onDelete: SetNull)
+  removedBy  User?    @relation("RackRemovedBy", fields: [removedById], references: [id], onDelete: SetNull)
+
+  @@index([tenantId, orderId])
+  @@index([tenantId, rackSlotId, removedAt])
+}
+
+// ---------------------------------------------------------------------------
+// Pickup & delivery
+// ---------------------------------------------------------------------------
+
+model PickupDeliveryTask {
+  id               String     @id @default(uuid()) @db.Uuid
+  tenantId         String     @db.Uuid
+  storeId          String     @db.Uuid
+  orderId          String?    @db.Uuid
+  customerId       String     @db.Uuid
+  addressId        String?    @db.Uuid
+  type             TaskType
+  status           TaskStatus @default(SCHEDULED)
+  source           TaskSource @default(STAFF)
+  /// Address snapshot shown to the driver.
+  address          String
+  scheduledDate    DateTime   @db.Date
+  timeSlot         String
+  assignedDriverId String?    @db.Uuid
+  requestedService String?
+  notes            String?
+  failureReason    String?
+  completedAt      DateTime?  @db.Timestamptz(3)
+  createdById      String?    @db.Uuid
+  createdAt        DateTime   @default(now()) @db.Timestamptz(3)
+  updatedAt        DateTime   @updatedAt @db.Timestamptz(3)
+
+  tenant         Tenant           @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  store          Store            @relation(fields: [storeId], references: [id])
+  order          Order?           @relation(fields: [orderId], references: [id], onDelete: SetNull)
+  customer       Customer         @relation(fields: [customerId], references: [id])
+  customerAddress CustomerAddress? @relation(fields: [addressId], references: [id], onDelete: SetNull)
+  assignedDriver User?            @relation("TaskDriver", fields: [assignedDriverId], references: [id], onDelete: SetNull)
+  createdBy      User?            @relation("TaskCreatedBy", fields: [createdById], references: [id], onDelete: SetNull)
+
+  @@index([tenantId, scheduledDate])
+  @@index([tenantId, status])
+  @@index([tenantId, assignedDriverId, scheduledDate])
+  @@index([tenantId, orderId])
+}
+
+// ---------------------------------------------------------------------------
+// Audit
+// ---------------------------------------------------------------------------
+
+model AuditLog {
+  id          String   @id @default(uuid()) @db.Uuid
+  tenantId    String   @db.Uuid
+  actorUserId String?  @db.Uuid
+  action      String
+  entityType  String
+  entityId    String?  @db.Uuid
+  metadata    Json?
+  ipAddress   String?
+  createdAt   DateTime @default(now()) @db.Timestamptz(3)
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  actor  User?  @relation(fields: [actorUserId], references: [id], onDelete: SetNull)
+
+  @@index([tenantId, createdAt])
+  @@index([tenantId, entityType, entityId])
+}

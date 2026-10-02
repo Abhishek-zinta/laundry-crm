@@ -1,0 +1,33 @@
+{
+  "name": "rinseops",
+  "private": true,
+  "version": "0.1.0",
+  "description": "RinseOps \u2014 Run your laundry business from one place.",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "engines": {
+    "node": ">=20.9"
+  },
+  "scripts": {
+    "build:shared": "npm run build -w @rinseops/shared",
+    "dev": "npm run build:shared && concurrently -n shared,api,web -c gray,cyan,magenta \"npm run dev -w @rinseops/shared\" \"npm run dev -w @rinseops/api\" \"npm run dev -w @rinseops/web\"",
+    "build": "npm run build:shared && npm run build -w @rinseops/api && npm run build -w @rinseops/web",
+    "typecheck": "npm run build:shared && npm run typecheck --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "test": "npm run build:shared && npm run test --workspaces --if-present",
+    "db:migrate": "npm run db:migrate -w @rinseops/api",
+    "db:deploy": "npm run db:deploy -w @rinseops/api",
+    "db:seed": "npm run db:seed -w @rinseops/api",
+    "db:reset": "npm run db:reset -w @rinseops/api",
+    "db:studio": "npm run db:studio -w @rinseops/api",
+    "format": "prettier --write \"apps/*/src/**/*.{ts,tsx,css}\" \"apps/api/prisma/*.ts\" \"apps/api/test/**/*.ts\" \"packages/*/src/**/*.ts\"",
+    "format:check": "prettier --check \"apps/*/src/**/*.{ts,tsx,css}\" \"apps/api/prisma/*.ts\" \"apps/api/test/**/*.ts\" \"packages/*/src/**/*.ts\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "prettier": "^3.9.9",
+    "typescript": "~5.9.3"
+  }
+}
