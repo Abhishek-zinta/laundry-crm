@@ -10,6 +10,7 @@ import {
   type UnitType,
 } from '@rinseops/shared';
 import type { z } from 'zod';
+import { randomId } from '@/lib/utils';
 
 /**
  * POS cart state. Lines keep only ids + quantity; prices are always derived
@@ -66,7 +67,7 @@ export function cartReducer(state: CartState, action: CartAction): CartState {
         };
       }
       const line: CartLine = {
-        key: crypto.randomUUID(),
+        key: randomId(),
         serviceCategoryId: action.serviceCategoryId,
         serviceItemId: action.serviceItemId,
         quantity: qty,
