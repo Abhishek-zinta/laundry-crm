@@ -6,6 +6,7 @@ import {
   canTransitionGarment,
   ChangeGarmentStatusInput,
   GarmentListQuery,
+  OPEN_ORDER_STATUSES,
   ORDER_STATUS_LABEL,
   OrderStatus,
   stageIndex,
@@ -72,14 +73,17 @@ export class GarmentsService {
       });
     }
     const where = { AND: and };
+    const skip = (query.page - 1) * query.pageSize;
     const [rows, total, counts] = await Promise.all([
-      db.garmentUnit.findMany({
-        where,
-        include: GARMENT_INCLUDE,
-        orderBy: [{ order: { dueDate: 'asc' } }, { tagCode: 'asc' }],
-        skip: (query.page - 1) * query.pageSize,
-        take: query.pageSize,
-      }),
+      query.sort === 'active'
+        ? this.activeFirstPage(db, and, skip, query.pageSize)
+        : db.garmentUnit.findMany({
+            where,
+            include: GARMENT_INCLUDE,
+            orderBy: [{ order: { dueDate: 'asc' } }, { tagCode: 'asc' }],
+            skip,
+            take: query.pageSize,
+          }),
       db.garmentUnit.count({ where }),
       db.garmentUnit.groupBy({
         by: ['status'],
@@ -94,6 +98,41 @@ export class GarmentsService {
       pageSize: query.pageSize,
       statusCounts: Object.fromEntries(counts.map((c) => [c.status, c._count._all])),
     };
+  }
+
+  /**
+   * One page of garments with in-process ones first (by due date, most urgent
+   * first), followed by delivered/cancelled ones (most recent first).
+   */
+  private async activeFirstPage(
+    db: ReturnType<PrismaService['forTenant']>,
+    and: Prisma.GarmentUnitWhereInput[],
+    skip: number,
+    take: number,
+  ) {
+    const open = { AND: [...and, { status: { in: [...OPEN_ORDER_STATUSES] } }] };
+    const closed = { AND: [...and, { status: { notIn: [...OPEN_ORDER_STATUSES] } }] };
+    const openCount = await db.garmentUnit.count({ where: open });
+    const openRows =
+      skip < openCount
+        ? await db.garmentUnit.findMany({
+            where: open,
+            include: GARMENT_INCLUDE,
+            orderBy: [{ order: { dueDate: 'asc' } }, { tagCode: 'asc' }],
+            skip,
+            take,
+          })
+        : [];
+    const remaining = take - openRows.length;
+    if (remaining <= 0) return openRows;
+    const closedRows = await db.garmentUnit.findMany({
+      where: closed,
+      include: GARMENT_INCLUDE,
+      orderBy: [{ order: { dueDate: 'desc' } }, { tagCode: 'asc' }],
+      skip: Math.max(0, skip - openCount),
+      take: remaining,
+    });
+    return [...openRows, ...closedRows];
   }
 
   async getByTag(ctx: AuthContext, tagCode: string) {

@@ -27,5 +27,11 @@ export const garmentListQuerySchema = paginationSchema.extend({
   storeId: idSchema.optional(),
   orderId: idSchema.optional(),
   hasIssues: z.enum(['true', 'false']).optional(),
+  /**
+   * "due" (default): by order due date, oldest first.
+   * "active": garments still in process first (most urgent first), then
+   * delivered/cancelled ones, most recent first.
+   */
+  sort: z.enum(['due', 'active']).default('due'),
 });
 export type GarmentListQuery = z.infer<typeof garmentListQuerySchema>;

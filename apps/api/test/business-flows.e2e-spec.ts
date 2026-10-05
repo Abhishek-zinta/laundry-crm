@@ -149,6 +149,20 @@ describe('RinseOps business flows (e2e)', () => {
     expect(after.status).toBe('QUALITY_CHECK');
   });
 
+  it('reports cancelled orders separately from customer totals', async () => {
+    const c = (await counter.post('/api/v1/customers').send({ firstName: 'Stats', phone: '9876500042' }).expect(201)).body;
+    const kept = (await newOrder({ customerId: c.id }).expect(201)).body;
+    const dropped = (await newOrder({ customerId: c.id }).expect(201)).body;
+    await owner.post(`/api/v1/orders/${dropped.id}/cancel`).send({ reason: 'customer changed mind' }).expect(200);
+
+    const detail = (await counter.get(`/api/v1/customers/${c.id}`).expect(200)).body;
+    expect(detail.stats.totalOrders).toBe(1);
+    expect(detail.stats.cancelledOrders).toBe(1);
+    expect(detail.stats.totalSpent).toBe(kept.grandTotal);
+    const history = (await counter.get(`/api/v1/orders?customerId=${c.id}`).expect(200)).body;
+    expect(history.total).toBe(2);
+  });
+
   it('blocks cancelling an order that still holds payments', async () => {
     const order = (await newOrder({ payments: [{ method: 'CASH', amount: '100' }] }).expect(201)).body;
     const res = await owner.post(`/api/v1/orders/${order.id}/cancel`).send({ reason: 'customer left' }).expect(422);
@@ -189,6 +203,27 @@ describe('RinseOps business flows (e2e)', () => {
     await counter.post(`/api/v1/orders/${first.id}/status`).send({ status: 'DELIVERED' }).expect(200);
     const after = (await counter.get(`/api/v1/racks?storeId=${t.storeId}`).expect(200)).body;
     expect(after.racks[0].slots.find((s: { id: string }) => s.id === a02.id).available).toBe(true);
+  });
+
+  it('lists in-process garments before delivered ones when sort=active, across pages', async () => {
+    type G = { id: string; status: string; order: { dueDate: string } };
+    const all: G[] = (await counter.get('/api/v1/garments?sort=active&pageSize=200').expect(200)).body.items;
+    const open = ['RECEIVED', 'PROCESSING', 'QUALITY_CHECK', 'READY'];
+    const firstClosed = all.findIndex((g) => !open.includes(g.status));
+    expect(firstClosed).toBeGreaterThan(0); // earlier tests left both kinds
+    expect(all.slice(firstClosed).every((g) => !open.includes(g.status))).toBe(true);
+    const due = (g: G) => new Date(g.order.dueDate).getTime();
+    const active = all.slice(0, firstClosed);
+    const closed = all.slice(firstClosed);
+    expect(active.every((g, i) => i === 0 || due(active[i - 1]!) <= due(g))).toBe(true);
+    expect(closed.every((g, i) => i === 0 || due(closed[i - 1]!) >= due(g))).toBe(true);
+
+    // Small pages stitched together give the same list (no gaps or repeats at the boundary).
+    const paged: G[] = [];
+    for (let page = 1; paged.length < all.length; page++) {
+      paged.push(...(await counter.get(`/api/v1/garments?sort=active&pageSize=3&page=${page}`).expect(200)).body.items);
+    }
+    expect(paged.map((g) => g.id)).toEqual(all.map((g) => g.id));
   });
 
   it('finds orders by phone, order number and garment tag', async () => {

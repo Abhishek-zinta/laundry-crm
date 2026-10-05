@@ -99,13 +99,15 @@ export class CustomersService {
     });
     if (!customer) throw notFound('Customer');
 
-    const [stats, openOrders] = await Promise.all([
+    const [stats, cancelledOrders, openOrders] = await Promise.all([
       db.order.aggregate({
         where: { customerId: id, status: { not: 'CANCELLED' } },
         _count: { _all: true },
         _sum: { grandTotal: true, balanceDue: true },
         _max: { createdAt: true },
       }),
+      // Reported separately: totals exclude cancelled orders, but order history lists them.
+      db.order.count({ where: { customerId: id, status: 'CANCELLED' } }),
       db.order.findMany({
         where: { customerId: id, status: { in: ['RECEIVED', 'PROCESSING', 'QUALITY_CHECK', 'READY'] }, ...storeScope(ctx) },
         orderBy: { dueDate: 'asc' },
@@ -130,6 +132,7 @@ export class CustomersService {
       ...customer,
       stats: {
         totalOrders: stats._count._all,
+        cancelledOrders,
         totalSpent: money(stats._sum.grandTotal),
         outstanding: money(stats._sum.balanceDue),
         lastOrderAt: stats._max.createdAt,

@@ -133,7 +133,8 @@ export interface CustomerDetail extends CustomerRef {
   createdAt: string;
   updatedAt: string;
   addresses: AddressDto[];
-  stats: { totalOrders: number; totalSpent: string; outstanding: string; lastOrderAt: string | null };
+  /** Totals exclude cancelled orders; `cancelledOrders` counts those separately. */
+  stats: { totalOrders: number; cancelledOrders: number; totalSpent: string; outstanding: string; lastOrderAt: string | null };
   openOrders: Array<{
     id: string;
     orderNumber: string;
