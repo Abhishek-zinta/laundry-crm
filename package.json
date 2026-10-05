@@ -15,6 +15,8 @@
     "dev": "npm run build:shared && concurrently -n shared,api,web -c gray,cyan,magenta \"npm run dev -w @rinseops/shared\" \"npm run dev -w @rinseops/api\" \"npm run dev -w @rinseops/web\"",
     "build": "npm run build:shared && npm run build -w @rinseops/api && npm run build -w @rinseops/web",
     "build:api": "npm run build:shared && npm run build -w @rinseops/api",
+    "build:web": "npm run build:shared && npm run build -w @rinseops/web",
+    "start:web": "npm run start -w @rinseops/web",
     "typecheck": "npm run build:shared && npm run typecheck --workspaces --if-present",
     "lint": "npm run lint --workspaces --if-present",
     "test": "npm run build:shared && npm run test --workspaces --if-present",
