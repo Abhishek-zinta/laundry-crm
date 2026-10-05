@@ -16,6 +16,15 @@ const nextConfig: NextConfig = {
   },
   poweredByHeader: false,
   reactStrictMode: true,
+  // Disk-constrained hosts (deploy/hostinger-web): keep webpack's build cache in
+  // memory instead of writing ~200 MB to .next/cache. Off unless the build asks.
+  ...(process.env.RINSEOPS_WEBPACK_MEMORY_CACHE === '1' && {
+    experimental: { webpackBuildWorker: true },
+    webpack: (config: { cache?: unknown }, { dev }: { dev: boolean }) => {
+      if (config.cache && !dev) config.cache = Object.freeze({ type: 'memory' });
+      return config;
+    },
+  }),
 };
 
 export default nextConfig;
