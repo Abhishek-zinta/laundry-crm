@@ -1,0 +1,763 @@
+{
+ "date": "2026-10-05",
+ "currency": "INR",
+ "metrics": {
+  "revenueToday": "2509.60",
+  "paymentsToday": 5,
+  "salesToday": "4519.99",
+  "ordersToday": 7,
+  "pendingOrders": 19,
+  "readyOrders": 9,
+  "unpaidAmount": "10190.57",
+  "unpaidOrders": 19,
+  "customersToday": 7,
+  "newCustomersToday": 1,
+  "overdueOrders": 3,
+  "pickupsToday": 3,
+  "deliveriesToday": 2
+ },
+ "statusCounts": {
+  "RECEIVED": 7,
+  "PROCESSING": 7,
+  "QUALITY_CHECK": 5,
+  "READY": 9,
+  "DELIVERED": 3
+ },
+ "recentOrders": [
+  {
+   "id": "c0569409-cbd1-4773-8803-27139a9d204b",
+   "orderNumber": "RO-2026-000132",
+   "status": "RECEIVED",
+   "paymentStatus": "PARTIAL",
+   "grandTotal": "855.50",
+   "paidAmount": "428.00",
+   "balanceDue": "427.50",
+   "totalPieces": 5,
+   "dueDate": "2026-10-09T12:30:00.000Z",
+   "createdAt": "2026-10-05T07:52:45.045Z",
+   "deliveryMode": "STORE_PICKUP",
+   "customer": {
+    "id": "a327563a-387c-44fd-9e23-dc08d0fc26b1",
+    "firstName": "Priya",
+    "lastName": "Sharma",
+    "phone": "9876543210"
+   },
+   "store": {
+    "id": "fa02e546-5a50-446e-8eab-4bde67918e39",
+    "name": "Central Store",
+    "code": "CT"
+   },
+   "rack": null
+  },
+  {
+   "id": "a7c23001-9e90-4aba-bb00-6e42e0759005",
+   "orderNumber": "RO-2026-000131",
+   "status": "PROCESSING",
+   "paymentStatus": "PAID",
+   "grandTotal": "424.80",
+   "paidAmount": "424.80",
+   "balanceDue": "0.00",
+   "totalPieces": 6,
+   "dueDate": "2026-10-07T12:30:00.000Z",
+   "createdAt": "2026-10-05T07:17:45.045Z",
+   "deliveryMode": "STORE_PICKUP",
+   "customer": {
+    "id": "a4609163-da2a-488a-a6cd-dfdffef1cad3",
+    "firstName": "Manoj",
+    "lastName": "Hegde",
+    "phone": "9449012876"
+   },
+   "store": {
+    "id": "035ff9b5-ad05-4996-ab81-a6b372700204",
+    "name": "Downtown Store",
+    "code": "DT"
+   },
+   "rack": null
+  },
+  {
+   "id": "ca29fee7-4bbc-4634-a5a1-bb1d4952af71",
+   "orderNumber": "RO-2026-000130",
+   "status": "RECEIVED",
+   "paymentStatus": "PAID",
+   "grandTotal": "1191.80",
+   "paidAmount": "1191.80",
+   "balanceDue": "0.00",
+   "totalPieces": 6,
+   "dueDate": "2026-10-07T12:30:00.000Z",
+   "createdAt": "2026-10-05T06:18:00.000Z",
+   "deliveryMode": "STORE_PICKUP",
+   "customer": {
+    "id": "ffed8bda-d850-46b4-b3db-51fed246a16a",
+    "firstName": "Lakshmi",
+    "lastName": "Rao",
+    "phone": "9844556677"
+   },
+   "store": {
+    "id": "fa02e546-5a50-446e-8eab-4bde67918e39",
+    "name": "Central Store",
+    "code": "CT"
+   },
+   "rack": null
+  },
+  {
+   "id": "5b68ccf9-e723-4c77-bc08-66a87832d008",
+   "orderNumber": "RO-2026-000129",
+   "status": "RECEIVED",
+   "paymentStatus": "UNPAID",
+   "grandTotal": "472.59",
+   "paidAmount": "0.00",
+   "balanceDue": "472.59",
+   "totalPieces": 1,
+   "dueDate": "2026-10-09T12:30:00.000Z",
+   "createdAt": "2026-10-05T05:25:00.000Z",
+   "deliveryMode": "STORE_PICKUP",
+   "customer": {
+    "id": "dfe461f9-7140-43a2-a402-f0d08cd158e1",
+    "firstName": "Shreya",
+    "lastName": "Ghosh",
+    "phone": "9008123459"
+   },
+   "store": {
+    "id": "fa02e546-5a50-446e-8eab-4bde67918e39",
+    "name": "Central Store",
+    "code": "CT"
+   },
+   "rack": null
+  },
+  {
+   "id": "dadeb5df-ef5c-4d04-bfbb-16ca3f978adf",
+   "orderNumber": "RO-2026-000128",
+   "status": "RECEIVED",
+   "paymentStatus": "PARTIAL",
+   "grandTotal": "584.10",
+   "paidAmount": "292.00",
+   "balanceDue": "292.10",
+   "totalPieces": 2,
+   "dueDate": "2026-10-07T12:30:00.000Z",
+   "createdAt": "2026-10-05T05:02:00.000Z",
+   "deliveryMode": "STORE_PICKUP",
+   "customer": {
+    "id": "d1d4b7e5-3bf3-4122-be28-ce06b4101408",
+    "firstName": "Ishita",
+    "lastName": "Banerjee",
+    "phone": "9916655443"
+   },
+   "store": {
+    "id": "fa02e546-5a50-446e-8eab-4bde67918e39",
+    "name": "Central Store",
+    "code": "CT"
+   },
+   "rack": null
+  },
+  {
+   "id": "5869fe32-f81b-489e-a791-154b9abc3d52",
+   "orderNumber": "RO-2026-000127",
+   "status": "RECEIVED",
+   "paymentStatus": "UNPAID",
+   "grandTotal": "413.00",
+   "paidAmount": "0.00",
+   "balanceDue": "413.00",
+   "totalPieces": 1,
+   "dueDate": "2026-10-07T12:30:00.000Z",
+   "createdAt": "2026-10-05T04:57:00.000Z",
+   "deliveryMode": "STORE_PICKUP",
+   "customer": {
+    "id": "9eb96aa0-7cdb-4f0d-91ab-34bc39f8f70a",
+    "firstName": "Rahul",
+    "lastName": "Verma",
+    "phone": "9811223344"
+   },
+   "store": {
+    "id": "fa02e546-5a50-446e-8eab-4bde67918e39",
+    "name": "Central Store",
+    "code": "CT"
+   },
+   "rack": null
+  },
+  {
+   "id": "4ba1e67e-e7ef-4ec8-86ec-ab8d22489b9e",
+   "orderNumber": "RO-2026-000126",
+   "status": "RECEIVED",
+   "paymentStatus": "PARTIAL",
+   "grandTotal": "578.20",
+   "paidAmount": "173.00",
+   "balanceDue": "405.20",
+   "totalPieces": 6,
+   "dueDate": "2026-10-08T12:30:00.000Z",
+   "createdAt": "2026-10-05T04:37:00.000Z",
+   "deliveryMode": "STORE_PICKUP",
+   "customer": {
+    "id": "f7c6981d-c404-4bef-bfca-b45c3b3ce2da",
+    "firstName": "Harsha",
+    "lastName": "Bhat",
+    "phone": "9611122233"
+   },
+   "store": {
+    "id": "035ff9b5-ad05-4996-ab81-a6b372700204",
+    "name": "Downtown Store",
+    "code": "DT"
+   },
+   "rack": null
+  },
+  {
+   "id": "10356a72-b6f9-4c28-b173-0c228199892c",
+   "orderNumber": "RO-2026-000125",
+   "status": "PROCESSING",
+   "paymentStatus": "PAID",
+   "grandTotal": "590.00",
+   "paidAmount": "590.00",
+   "balanceDue": "0.00",
+   "totalPieces": 3,
+   "dueDate": "2026-10-08T12:30:00.000Z",
+   "createdAt": "2026-10-04T13:49:00.000Z",
+   "deliveryMode": "STORE_PICKUP",
+   "customer": {
+    "id": "d1d4b7e5-3bf3-4122-be28-ce06b4101408",
+    "firstName": "Ishita",
+    "lastName": "Banerjee",
+    "phone": "9916655443"
+   },
+   "store": {
+    "id": "035ff9b5-ad05-4996-ab81-a6b372700204",
+    "name": "Downtown Store",
+    "code": "DT"
+   },
+   "rack": null
+  }
+ ],
+ "recentPayments": [
+  {
+   "id": "e9abadb0-e35f-40cc-bd37-b9880fe29eeb",
+   "tenantId": "dd97f064-15f0-4200-b17c-2b1259e7eadf",
+   "orderId": "c0569409-cbd1-4773-8803-27139a9d204b",
+   "storeId": "fa02e546-5a50-446e-8eab-4bde67918e39",
+   "customerId": "a327563a-387c-44fd-9e23-dc08d0fc26b1",
+   "amount": "428.00",
+   "method": "CARD",
+   "reference": "XXXX1146",
+   "notes": null,
+   "status": "COMPLETED",
+   "receivedById": "7fca94a0-f93f-44fd-9306-0995f99f470a",
+   "receivedAt": "2026-10-05T07:52:45.045Z",
+   "refundedAt": null,
+   "refundedById": null,
+   "refundReason": null,
+   "idempotencyKey": null,
+   "createdAt": "2026-10-05T07:52:45.045Z",
+   "updatedAt": "2026-10-05T08:41:46.702Z",
+   "order": {
+    "id": "c0569409-cbd1-4773-8803-27139a9d204b",
+    "orderNumber": "RO-2026-000132"
+   },
+   "customer": {
+    "id": "a327563a-387c-44fd-9e23-dc08d0fc26b1",
+    "firstName": "Priya",
+    "lastName": "Sharma"
+   },
+   "receivedBy": {
+    "name": "Anjali Rao"
+   }
+  },
+  {
+   "id": "b73745c5-bf2d-4d90-b7dd-2f4148086562",
+   "tenantId": "dd97f064-15f0-4200-b17c-2b1259e7eadf",
+   "orderId": "a7c23001-9e90-4aba-bb00-6e42e0759005",
+   "storeId": "035ff9b5-ad05-4996-ab81-a6b372700204",
+   "customerId": "a4609163-da2a-488a-a6cd-dfdffef1cad3",
+   "amount": "424.80",
+   "method": "CARD",
+   "reference": "XXXX6045",
+   "notes": null,
+   "status": "COMPLETED",
+   "receivedById": "10a66d65-7a22-4640-851e-eb9e529bf14b",
+   "receivedAt": "2026-10-05T07:17:45.045Z",
+   "refundedAt": null,
+   "refundedById": null,
+   "refundReason": null,
+   "idempotencyKey": null,
+   "createdAt": "2026-10-05T07:17:45.045Z",
+   "updatedAt": "2026-10-05T08:41:46.691Z",
+   "order": {
+    "id": "a7c23001-9e90-4aba-bb00-6e42e0759005",
+    "orderNumber": "RO-2026-000131"
+   },
+   "customer": {
+    "id": "a4609163-da2a-488a-a6cd-dfdffef1cad3",
+    "firstName": "Manoj",
+    "lastName": "Hegde"
+   },
+   "receivedBy": {
+    "name": "Rohan Das"
+   }
+  },
+  {
+   "id": "1f54542e-7fda-4007-843c-8be101321b1b",
+   "tenantId": "dd97f064-15f0-4200-b17c-2b1259e7eadf",
+   "orderId": "ca29fee7-4bbc-4634-a5a1-bb1d4952af71",
+   "storeId": "fa02e546-5a50-446e-8eab-4bde67918e39",
+   "customerId": "ffed8bda-d850-46b4-b3db-51fed246a16a",
+   "amount": "1191.80",
+   "method": "CASH",
+   "reference": null,
+   "notes": null,
+   "status": "COMPLETED",
+   "receivedById": "7fca94a0-f93f-44fd-9306-0995f99f470a",
+   "receivedAt": "2026-10-05T06:18:00.000Z",
+   "refundedAt": null,
+   "refundedById": null,
+   "refundReason": null,
+   "idempotencyKey": null,
+   "createdAt": "2026-10-05T06:18:00.000Z",
+   "updatedAt": "2026-10-05T08:41:46.679Z",
+   "order": {
+    "id": "ca29fee7-4bbc-4634-a5a1-bb1d4952af71",
+    "orderNumber": "RO-2026-000130"
+   },
+   "customer": {
+    "id": "ffed8bda-d850-46b4-b3db-51fed246a16a",
+    "firstName": "Lakshmi",
+    "lastName": "Rao"
+   },
+   "receivedBy": {
+    "name": "Anjali Rao"
+   }
+  },
+  {
+   "id": "4e70f5f7-6ca2-4978-9511-f9532d9c6428",
+   "tenantId": "dd97f064-15f0-4200-b17c-2b1259e7eadf",
+   "orderId": "dadeb5df-ef5c-4d04-bfbb-16ca3f978adf",
+   "storeId": "fa02e546-5a50-446e-8eab-4bde67918e39",
+   "customerId": "d1d4b7e5-3bf3-4122-be28-ce06b4101408",
+   "amount": "292.00",
+   "method": "UPI",
+   "reference": "UPI967680485",
+   "notes": null,
+   "status": "COMPLETED",
+   "receivedById": "7fca94a0-f93f-44fd-9306-0995f99f470a",
+   "receivedAt": "2026-10-05T05:02:00.000Z",
+   "refundedAt": null,
+   "refundedById": null,
+   "refundReason": null,
+   "idempotencyKey": null,
+   "createdAt": "2026-10-05T05:02:00.000Z",
+   "updatedAt": "2026-10-05T08:41:46.659Z",
+   "order": {
+    "id": "dadeb5df-ef5c-4d04-bfbb-16ca3f978adf",
+    "orderNumber": "RO-2026-000128"
+   },
+   "customer": {
+    "id": "d1d4b7e5-3bf3-4122-be28-ce06b4101408",
+    "firstName": "Ishita",
+    "lastName": "Banerjee"
+   },
+   "receivedBy": {
+    "name": "Anjali Rao"
+   }
+  },
+  {
+   "id": "bcf5f4cb-1852-493f-9c7e-dbbbf2f60a7c",
+   "tenantId": "dd97f064-15f0-4200-b17c-2b1259e7eadf",
+   "orderId": "4ba1e67e-e7ef-4ec8-86ec-ab8d22489b9e",
+   "storeId": "035ff9b5-ad05-4996-ab81-a6b372700204",
+   "customerId": "f7c6981d-c404-4bef-bfca-b45c3b3ce2da",
+   "amount": "173.00",
+   "method": "CASH",
+   "reference": null,
+   "notes": null,
+   "status": "COMPLETED",
+   "receivedById": "10a66d65-7a22-4640-851e-eb9e529bf14b",
+   "receivedAt": "2026-10-05T04:37:00.000Z",
+   "refundedAt": null,
+   "refundedById": null,
+   "refundReason": null,
+   "idempotencyKey": null,
+   "createdAt": "2026-10-05T04:37:00.000Z",
+   "updatedAt": "2026-10-05T08:41:46.641Z",
+   "order": {
+    "id": "4ba1e67e-e7ef-4ec8-86ec-ab8d22489b9e",
+    "orderNumber": "RO-2026-000126"
+   },
+   "customer": {
+    "id": "f7c6981d-c404-4bef-bfca-b45c3b3ce2da",
+    "firstName": "Harsha",
+    "lastName": "Bhat"
+   },
+   "receivedBy": {
+    "name": "Rohan Das"
+   }
+  },
+  {
+   "id": "a415df25-3714-4d51-88eb-18405c01a472",
+   "tenantId": "dd97f064-15f0-4200-b17c-2b1259e7eadf",
+   "orderId": "33a835b7-423f-4d82-9f8c-2be24e264ae5",
+   "storeId": "fa02e546-5a50-446e-8eab-4bde67918e39",
+   "customerId": "a327563a-387c-44fd-9e23-dc08d0fc26b1",
+   "amount": "454.00",
+   "method": "UPI",
+   "reference": "UPI979186422",
+   "notes": null,
+   "status": "COMPLETED",
+   "receivedById": "7fca94a0-f93f-44fd-9306-0995f99f470a",
+   "receivedAt": "2026-10-04T17:14:00.000Z",
+   "refundedAt": null,
+   "refundedById": null,
+   "refundReason": null,
+   "idempotencyKey": null,
+   "createdAt": "2026-10-04T17:14:00.000Z",
+   "updatedAt": "2026-10-05T08:41:46.423Z",
+   "order": {
+    "id": "33a835b7-423f-4d82-9f8c-2be24e264ae5",
+    "orderNumber": "RO-2026-000108"
+   },
+   "customer": {
+    "id": "a327563a-387c-44fd-9e23-dc08d0fc26b1",
+    "firstName": "Priya",
+    "lastName": "Sharma"
+   },
+   "receivedBy": {
+    "name": "Anjali Rao"
+   }
+  },
+  {
+   "id": "542d7879-d0d0-4b99-aa49-2f552fd9ea85",
+   "tenantId": "dd97f064-15f0-4200-b17c-2b1259e7eadf",
+   "orderId": "10356a72-b6f9-4c28-b173-0c228199892c",
+   "storeId": "035ff9b5-ad05-4996-ab81-a6b372700204",
+   "customerId": "d1d4b7e5-3bf3-4122-be28-ce06b4101408",
+   "amount": "590.00",
+   "method": "UPI",
+   "reference": "UPI109150305",
+   "notes": null,
+   "status": "COMPLETED",
+   "receivedById": "10a66d65-7a22-4640-851e-eb9e529bf14b",
+   "receivedAt": "2026-10-04T13:49:00.000Z",
+   "refundedAt": null,
+   "refundedById": null,
+   "refundReason": null,
+   "idempotencyKey": null,
+   "createdAt": "2026-10-04T13:49:00.000Z",
+   "updatedAt": "2026-10-05T08:41:46.628Z",
+   "order": {
+    "id": "10356a72-b6f9-4c28-b173-0c228199892c",
+    "orderNumber": "RO-2026-000125"
+   },
+   "customer": {
+    "id": "d1d4b7e5-3bf3-4122-be28-ce06b4101408",
+    "firstName": "Ishita",
+    "lastName": "Banerjee"
+   },
+   "receivedBy": {
+    "name": "Rohan Das"
+   }
+  },
+  {
+   "id": "fd1d263d-4905-4e77-93da-3d746cf8bec7",
+   "tenantId": "dd97f064-15f0-4200-b17c-2b1259e7eadf",
+   "orderId": "7b4e4bff-a69c-444e-a590-d86c9f2f928e",
+   "storeId": "fa02e546-5a50-446e-8eab-4bde67918e39",
+   "customerId": "ffed8bda-d850-46b4-b3db-51fed246a16a",
+   "amount": "590.00",
+   "method": "CARD",
+   "reference": "XXXX9803",
+   "notes": null,
+   "status": "COMPLETED",
+   "receivedById": "7fca94a0-f93f-44fd-9306-0995f99f470a",
+   "receivedAt": "2026-10-04T13:13:00.000Z",
+   "refundedAt": null,
+   "refundedById": null,
+   "refundReason": null,
+   "idempotencyKey": null,
+   "createdAt": "2026-10-04T13:13:00.000Z",
+   "updatedAt": "2026-10-05T08:41:46.616Z",
+   "order": {
+    "id": "7b4e4bff-a69c-444e-a590-d86c9f2f928e",
+    "orderNumber": "RO-2026-000124"
+   },
+   "customer": {
+    "id": "ffed8bda-d850-46b4-b3db-51fed246a16a",
+    "firstName": "Lakshmi",
+    "lastName": "Rao"
+   },
+   "receivedBy": {
+    "name": "Anjali Rao"
+   }
+  }
+ ],
+ "dueToday": [
+  {
+   "id": "7a51c483-b823-4064-b16d-0672a1a2e9a3",
+   "orderNumber": "RO-2026-000111",
+   "status": "READY",
+   "paymentStatus": "PAID",
+   "grandTotal": "403.56",
+   "paidAmount": "403.56",
+   "balanceDue": "0.00",
+   "totalPieces": 6,
+   "dueDate": "2026-10-05T11:30:00.000Z",
+   "createdAt": "2026-10-03T04:05:00.000Z",
+   "deliveryMode": "STORE_PICKUP",
+   "customer": {
+    "id": "a327563a-387c-44fd-9e23-dc08d0fc26b1",
+    "firstName": "Priya",
+    "lastName": "Sharma",
+    "phone": "9876543210"
+   },
+   "store": {
+    "id": "035ff9b5-ad05-4996-ab81-a6b372700204",
+    "name": "Downtown Store",
+    "code": "DT"
+   },
+   "rack": {
+    "slotId": "9409186d-846e-4120-a518-49f46d04d6ed",
+    "slotCode": "A05",
+    "rackId": "d138ba2d-4286-4b5b-9ad0-2b83c655c4fd",
+    "rackName": "Rack A",
+    "rackCode": "A"
+   }
+  },
+  {
+   "id": "069ec3ca-4448-4718-b3ea-553f2f9fee8b",
+   "orderNumber": "RO-2026-000101",
+   "status": "READY",
+   "paymentStatus": "PARTIAL",
+   "grandTotal": "855.50",
+   "paidAmount": "257.00",
+   "balanceDue": "598.50",
+   "totalPieces": 5,
+   "dueDate": "2026-10-05T12:30:00.000Z",
+   "createdAt": "2026-10-02T03:30:00.000Z",
+   "deliveryMode": "STORE_PICKUP",
+   "customer": {
+    "id": "86f200f6-3e28-4ce1-ae46-f0d24e0d1d95",
+    "firstName": "Arjun",
+    "lastName": "Reddy",
+    "phone": "9845012345"
+   },
+   "store": {
+    "id": "035ff9b5-ad05-4996-ab81-a6b372700204",
+    "name": "Downtown Store",
+    "code": "DT"
+   },
+   "rack": {
+    "slotId": "f0725988-4583-4e52-9054-dd3567235d91",
+    "slotCode": "A01",
+    "rackId": "d138ba2d-4286-4b5b-9ad0-2b83c655c4fd",
+    "rackName": "Rack A",
+    "rackCode": "A"
+   }
+  },
+  {
+   "id": "9b92956b-55b5-44b1-b7d5-8bae6bf84126",
+   "orderNumber": "RO-2026-000109",
+   "status": "READY",
+   "paymentStatus": "UNPAID",
+   "grandTotal": "590.00",
+   "paidAmount": "0.00",
+   "balanceDue": "590.00",
+   "totalPieces": 3,
+   "dueDate": "2026-10-05T12:30:00.000Z",
+   "createdAt": "2026-10-03T03:44:00.000Z",
+   "deliveryMode": "STORE_PICKUP",
+   "customer": {
+    "id": "0c55ce04-6b97-461d-9af3-74c0b724c2e0",
+    "firstName": "Pooja",
+    "lastName": "Nair",
+    "phone": "9945678123"
+   },
+   "store": {
+    "id": "fa02e546-5a50-446e-8eab-4bde67918e39",
+    "name": "Central Store",
+    "code": "CT"
+   },
+   "rack": {
+    "slotId": "a091c07c-1bf4-48fa-b337-d06ffe785b87",
+    "slotCode": "A01",
+    "rackId": "f8f7fcff-9591-4d85-b512-7d4e521c1f07",
+    "rackName": "Rack A",
+    "rackCode": "A"
+   }
+  },
+  {
+   "id": "2787c8c6-e9e5-497d-9999-b106faa92aef",
+   "orderNumber": "RO-2026-000110",
+   "status": "QUALITY_CHECK",
+   "paymentStatus": "UNPAID",
+   "grandTotal": "796.50",
+   "paidAmount": "0.00",
+   "balanceDue": "796.50",
+   "totalPieces": 2,
+   "dueDate": "2026-10-05T12:30:00.000Z",
+   "createdAt": "2026-10-03T03:48:00.000Z",
+   "deliveryMode": "HOME_DELIVERY",
+   "customer": {
+    "id": "ed9295e8-0985-40e3-a8b1-3a16c32dd5d7",
+    "firstName": "Meera",
+    "lastName": "Pillai",
+    "phone": "9886012347"
+   },
+   "store": {
+    "id": "035ff9b5-ad05-4996-ab81-a6b372700204",
+    "name": "Downtown Store",
+    "code": "DT"
+   },
+   "rack": null
+  },
+  {
+   "id": "16e09eb3-695f-4a6a-b5c7-4ff638ba8d21",
+   "orderNumber": "RO-2026-000112",
+   "status": "QUALITY_CHECK",
+   "paymentStatus": "PARTIAL",
+   "grandTotal": "949.90",
+   "paidAmount": "380.00",
+   "balanceDue": "569.90",
+   "totalPieces": 5,
+   "dueDate": "2026-10-05T12:30:00.000Z",
+   "createdAt": "2026-10-03T04:20:00.000Z",
+   "deliveryMode": "STORE_PICKUP",
+   "customer": {
+    "id": "56e51a35-b0ca-424b-823b-0f0c5b7dd8c4",
+    "firstName": "Deepak",
+    "lastName": "Chauhan",
+    "phone": "9900987123"
+   },
+   "store": {
+    "id": "fa02e546-5a50-446e-8eab-4bde67918e39",
+    "name": "Central Store",
+    "code": "CT"
+   },
+   "rack": null
+  },
+  {
+   "id": "4f0964ed-85ae-4277-ba1b-7e26ed48cb59",
+   "orderNumber": "RO-2026-000122",
+   "status": "PROCESSING",
+   "paymentStatus": "PARTIAL",
+   "grandTotal": "812.73",
+   "paidAmount": "406.00",
+   "balanceDue": "406.73",
+   "totalPieces": 5,
+   "dueDate": "2026-10-05T13:30:00.000Z",
+   "createdAt": "2026-10-04T11:19:00.000Z",
+   "deliveryMode": "STORE_PICKUP",
+   "customer": {
+    "id": "40260045-4033-44a8-af13-7dc292e9dce7",
+    "firstName": "Amit",
+    "lastName": "Patel",
+    "phone": "9823456781"
+   },
+   "store": {
+    "id": "035ff9b5-ad05-4996-ab81-a6b372700204",
+    "name": "Downtown Store",
+    "code": "DT"
+   },
+   "rack": null
+  }
+ ],
+ "overdue": [
+  {
+   "id": "27791b91-2929-4a78-b3e5-6f82e933a0ee",
+   "orderNumber": "RO-2026-000094",
+   "status": "QUALITY_CHECK",
+   "paymentStatus": "PAID",
+   "grandTotal": "1191.80",
+   "paidAmount": "1191.80",
+   "balanceDue": "0.00",
+   "totalPieces": 6,
+   "dueDate": "2026-10-03T12:30:00.000Z",
+   "createdAt": "2026-09-30T06:28:00.000Z",
+   "deliveryMode": "STORE_PICKUP",
+   "customer": {
+    "id": "ed9295e8-0985-40e3-a8b1-3a16c32dd5d7",
+    "firstName": "Meera",
+    "lastName": "Pillai",
+    "phone": "9886012347"
+   },
+   "store": {
+    "id": "035ff9b5-ad05-4996-ab81-a6b372700204",
+    "name": "Downtown Store",
+    "code": "DT"
+   },
+   "rack": null
+  },
+  {
+   "id": "88a7b4b3-608a-40ab-97c1-6be1c15619f5",
+   "orderNumber": "RO-2026-000103",
+   "status": "RECEIVED",
+   "paymentStatus": "PAID",
+   "grandTotal": "531.00",
+   "paidAmount": "531.00",
+   "balanceDue": "0.00",
+   "totalPieces": 6,
+   "dueDate": "2026-10-04T06:30:00.000Z",
+   "createdAt": "2026-10-02T04:50:00.000Z",
+   "deliveryMode": "STORE_PICKUP",
+   "customer": {
+    "id": "dfe461f9-7140-43a2-a402-f0d08cd158e1",
+    "firstName": "Shreya",
+    "lastName": "Ghosh",
+    "phone": "9008123459"
+   },
+   "store": {
+    "id": "035ff9b5-ad05-4996-ab81-a6b372700204",
+    "name": "Downtown Store",
+    "code": "DT"
+   },
+   "rack": null
+  },
+  {
+   "id": "d0880bf1-0c32-41c1-a660-8425c495fbd4",
+   "orderNumber": "RO-2026-000098",
+   "status": "PROCESSING",
+   "paymentStatus": "UNPAID",
+   "grandTotal": "590.00",
+   "paidAmount": "0.00",
+   "balanceDue": "590.00",
+   "totalPieces": 3,
+   "dueDate": "2026-10-04T12:30:00.000Z",
+   "createdAt": "2026-10-01T03:35:00.000Z",
+   "deliveryMode": "STORE_PICKUP",
+   "customer": {
+    "id": "ed4c632c-3d71-4ce3-8320-6a496195881d",
+    "firstName": "Rohit",
+    "lastName": "Kapoor",
+    "phone": "9972345610"
+   },
+   "store": {
+    "id": "035ff9b5-ad05-4996-ab81-a6b372700204",
+    "name": "Downtown Store",
+    "code": "DT"
+   },
+   "rack": null
+  }
+ ],
+ "trend": [
+  {
+   "date": "2026-09-29",
+   "amount": "2483.90"
+  },
+  {
+   "date": "2026-09-30",
+   "amount": "3411.79"
+  },
+  {
+   "date": "2026-10-01",
+   "amount": "1241.80"
+  },
+  {
+   "date": "2026-10-02",
+   "amount": "4620.89"
+  },
+  {
+   "date": "2026-10-03",
+   "amount": "4356.06"
+  },
+  {
+   "date": "2026-10-04",
+   "amount": "3928.80"
+  },
+  {
+   "date": "2026-10-05",
+   "amount": "2509.60"
+  }
+ ]
+}

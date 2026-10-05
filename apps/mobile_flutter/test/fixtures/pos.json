@@ -1,0 +1,696 @@
+{
+ "priceList": {
+  "id": "60881364-826b-45de-9686-585257a6c4aa",
+  "name": "Retail"
+ },
+ "categories": [
+  {
+   "id": "1fd952e8-4c01-4d23-b06a-778709e129ce",
+   "name": "Dry Cleaning",
+   "code": "DC",
+   "color": "#0f766e",
+   "items": [
+    {
+     "serviceItemId": "8f73f626-199e-43e3-890c-f28d0b8b8913",
+     "name": "Shirt",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "shirt",
+     "price": "120.00"
+    },
+    {
+     "serviceItemId": "507b22a2-428a-4e38-a0fc-bcfd80105eef",
+     "name": "T-Shirt",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "tshirt",
+     "price": "100.00"
+    },
+    {
+     "serviceItemId": "98b47d29-286d-4f0f-87c8-65337e8c8fcc",
+     "name": "Trouser",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "trouser",
+     "price": "150.00"
+    },
+    {
+     "serviceItemId": "a200e5bd-092f-4f38-b829-0b67acd71d5a",
+     "name": "Jeans",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "jeans",
+     "price": "160.00"
+    },
+    {
+     "serviceItemId": "0eefc1d3-1143-4033-a0db-00cb03fc5969",
+     "name": "Suit (2 pc)",
+     "unitType": "PIECE",
+     "piecesPerUnit": 2,
+     "icon": "suit",
+     "price": "450.00"
+    },
+    {
+     "serviceItemId": "1ae1e4c7-5159-4c3c-a43f-3c69bc42a3b6",
+     "name": "Blazer",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "suit",
+     "price": "300.00"
+    },
+    {
+     "serviceItemId": "ab00d3bf-9e53-4b47-93ad-06b80c04f53e",
+     "name": "Jacket",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "jacket",
+     "price": "300.00"
+    },
+    {
+     "serviceItemId": "8bf625f4-da07-4ecb-b01f-49a653b33b6e",
+     "name": "Sweater / Hoodie",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "hoodie",
+     "price": "200.00"
+    },
+    {
+     "serviceItemId": "2936e015-ffda-4bd7-9a4c-e7e87bab42ff",
+     "name": "Dress",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "dress",
+     "price": "250.00"
+    },
+    {
+     "serviceItemId": "a1883deb-7a24-456b-a875-5b3c86e66e9e",
+     "name": "Saree",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "saree",
+     "price": "250.00"
+    },
+    {
+     "serviceItemId": "a939dae3-c627-41af-a0c4-459bd901dce6",
+     "name": "Kurta",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "kurta",
+     "price": "130.00"
+    },
+    {
+     "serviceItemId": "d4a868e6-b018-4c31-88b9-b03a32c7f66a",
+     "name": "Skirt",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "skirt",
+     "price": "150.00"
+    },
+    {
+     "serviceItemId": "6f1b0f08-edee-40cd-a3b3-c61a2a79e603",
+     "name": "Scarf / Dupatta",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "scarf",
+     "price": "90.00"
+    },
+    {
+     "serviceItemId": "c6e9121e-0a55-4925-a5cf-0ae34905599e",
+     "name": "Tie",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "tie",
+     "price": "80.00"
+    },
+    {
+     "serviceItemId": "d112344d-ed33-4a15-93b9-0dc97457d9b7",
+     "name": "Blanket",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "blanket",
+     "price": "400.00"
+    },
+    {
+     "serviceItemId": "e893a91e-9e8f-4145-a625-f1fe0baef793",
+     "name": "Bedsheet",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "bedsheet",
+     "price": "150.00"
+    },
+    {
+     "serviceItemId": "f7241844-0ce2-4294-9c88-1152dfce5180",
+     "name": "Curtains",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "curtain",
+     "price": "250.00"
+    },
+    {
+     "serviceItemId": "e247809d-261f-4a14-b164-f4749a093d23",
+     "name": "Carpet / Rug",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "carpet",
+     "price": "600.00"
+    },
+    {
+     "serviceItemId": "c0e01d57-604b-42da-8182-81f787a5429b",
+     "name": "Handbag",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "bag",
+     "price": "450.00"
+    },
+    {
+     "serviceItemId": "d951851f-e6c2-4702-8a6a-3aa0a1325bce",
+     "name": "Gloves",
+     "unitType": "PAIR",
+     "piecesPerUnit": 1,
+     "icon": "gloves",
+     "price": "80.00"
+    }
+   ]
+  },
+  {
+   "id": "ba917c3d-43b6-4e0b-9c91-7e15aed48ae0",
+   "name": "Wash & Fold",
+   "code": "WF",
+   "color": "#2563eb",
+   "items": [
+    {
+     "serviceItemId": "507b22a2-428a-4e38-a0fc-bcfd80105eef",
+     "name": "T-Shirt",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "tshirt",
+     "price": "40.00"
+    },
+    {
+     "serviceItemId": "a200e5bd-092f-4f38-b829-0b67acd71d5a",
+     "name": "Jeans",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "jeans",
+     "price": "60.00"
+    },
+    {
+     "serviceItemId": "8bf625f4-da07-4ecb-b01f-49a653b33b6e",
+     "name": "Sweater / Hoodie",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "hoodie",
+     "price": "90.00"
+    },
+    {
+     "serviceItemId": "d112344d-ed33-4a15-93b9-0dc97457d9b7",
+     "name": "Blanket",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "blanket",
+     "price": "350.00"
+    },
+    {
+     "serviceItemId": "e893a91e-9e8f-4145-a625-f1fe0baef793",
+     "name": "Bedsheet",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "bedsheet",
+     "price": "100.00"
+    },
+    {
+     "serviceItemId": "24c9c168-0d20-46ec-8f7e-2ed682c45e91",
+     "name": "Pillow Cover",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "pillow",
+     "price": "30.00"
+    },
+    {
+     "serviceItemId": "8cb63ed6-24bd-4452-bdf5-ff4afa56f382",
+     "name": "Towel",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "towel",
+     "price": "40.00"
+    },
+    {
+     "serviceItemId": "f7241844-0ce2-4294-9c88-1152dfce5180",
+     "name": "Curtains",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "curtain",
+     "price": "180.00"
+    },
+    {
+     "serviceItemId": "e247809d-261f-4a14-b164-f4749a093d23",
+     "name": "Carpet / Rug",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "carpet",
+     "price": "450.00"
+    },
+    {
+     "serviceItemId": "d951851f-e6c2-4702-8a6a-3aa0a1325bce",
+     "name": "Gloves",
+     "unitType": "PAIR",
+     "piecesPerUnit": 1,
+     "icon": "gloves",
+     "price": "30.00"
+    },
+    {
+     "serviceItemId": "924c27cb-827b-4940-9878-5ed51b1ddacc",
+     "name": "Socks",
+     "unitType": "PAIR",
+     "piecesPerUnit": 1,
+     "icon": "socks",
+     "price": "20.00"
+    },
+    {
+     "serviceItemId": "74a6c427-be29-4091-9884-1ed9e218dfc7",
+     "name": "Cap",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "cap",
+     "price": "50.00"
+    },
+    {
+     "serviceItemId": "c77b03ed-2e43-425b-aa86-91345d5525d6",
+     "name": "Laundry (by kg)",
+     "unitType": "KG",
+     "piecesPerUnit": 1,
+     "icon": "basket",
+     "price": "89.00"
+    }
+   ]
+  },
+  {
+   "id": "b166e22b-216d-4d99-9392-cf77f27a94b4",
+   "name": "Wash & Iron",
+   "code": "WI",
+   "color": "#7c3aed",
+   "items": [
+    {
+     "serviceItemId": "8f73f626-199e-43e3-890c-f28d0b8b8913",
+     "name": "Shirt",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "shirt",
+     "price": "70.00"
+    },
+    {
+     "serviceItemId": "507b22a2-428a-4e38-a0fc-bcfd80105eef",
+     "name": "T-Shirt",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "tshirt",
+     "price": "60.00"
+    },
+    {
+     "serviceItemId": "98b47d29-286d-4f0f-87c8-65337e8c8fcc",
+     "name": "Trouser",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "trouser",
+     "price": "80.00"
+    },
+    {
+     "serviceItemId": "a200e5bd-092f-4f38-b829-0b67acd71d5a",
+     "name": "Jeans",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "jeans",
+     "price": "90.00"
+    },
+    {
+     "serviceItemId": "ab00d3bf-9e53-4b47-93ad-06b80c04f53e",
+     "name": "Jacket",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "jacket",
+     "price": "180.00"
+    },
+    {
+     "serviceItemId": "8bf625f4-da07-4ecb-b01f-49a653b33b6e",
+     "name": "Sweater / Hoodie",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "hoodie",
+     "price": "120.00"
+    },
+    {
+     "serviceItemId": "2936e015-ffda-4bd7-9a4c-e7e87bab42ff",
+     "name": "Dress",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "dress",
+     "price": "140.00"
+    },
+    {
+     "serviceItemId": "a1883deb-7a24-456b-a875-5b3c86e66e9e",
+     "name": "Saree",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "saree",
+     "price": "150.00"
+    },
+    {
+     "serviceItemId": "a939dae3-c627-41af-a0c4-459bd901dce6",
+     "name": "Kurta",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "kurta",
+     "price": "75.00"
+    },
+    {
+     "serviceItemId": "d4a868e6-b018-4c31-88b9-b03a32c7f66a",
+     "name": "Skirt",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "skirt",
+     "price": "80.00"
+    },
+    {
+     "serviceItemId": "6f1b0f08-edee-40cd-a3b3-c61a2a79e603",
+     "name": "Scarf / Dupatta",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "scarf",
+     "price": "50.00"
+    },
+    {
+     "serviceItemId": "e893a91e-9e8f-4145-a625-f1fe0baef793",
+     "name": "Bedsheet",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "bedsheet",
+     "price": "120.00"
+    },
+    {
+     "serviceItemId": "24c9c168-0d20-46ec-8f7e-2ed682c45e91",
+     "name": "Pillow Cover",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "pillow",
+     "price": "40.00"
+    },
+    {
+     "serviceItemId": "8cb63ed6-24bd-4452-bdf5-ff4afa56f382",
+     "name": "Towel",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "towel",
+     "price": "50.00"
+    },
+    {
+     "serviceItemId": "c77b03ed-2e43-425b-aa86-91345d5525d6",
+     "name": "Laundry (by kg)",
+     "unitType": "KG",
+     "piecesPerUnit": 1,
+     "icon": "basket",
+     "price": "129.00"
+    }
+   ]
+  },
+  {
+   "id": "7ba4bd1f-70d7-4d87-9ed4-6320515fbd68",
+   "name": "Steam Iron",
+   "code": "SI",
+   "color": "#ea580c",
+   "items": [
+    {
+     "serviceItemId": "8f73f626-199e-43e3-890c-f28d0b8b8913",
+     "name": "Shirt",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "shirt",
+     "price": "30.00"
+    },
+    {
+     "serviceItemId": "507b22a2-428a-4e38-a0fc-bcfd80105eef",
+     "name": "T-Shirt",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "tshirt",
+     "price": "25.00"
+    },
+    {
+     "serviceItemId": "98b47d29-286d-4f0f-87c8-65337e8c8fcc",
+     "name": "Trouser",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "trouser",
+     "price": "35.00"
+    },
+    {
+     "serviceItemId": "a200e5bd-092f-4f38-b829-0b67acd71d5a",
+     "name": "Jeans",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "jeans",
+     "price": "40.00"
+    },
+    {
+     "serviceItemId": "0eefc1d3-1143-4033-a0db-00cb03fc5969",
+     "name": "Suit (2 pc)",
+     "unitType": "PIECE",
+     "piecesPerUnit": 2,
+     "icon": "suit",
+     "price": "150.00"
+    },
+    {
+     "serviceItemId": "1ae1e4c7-5159-4c3c-a43f-3c69bc42a3b6",
+     "name": "Blazer",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "suit",
+     "price": "100.00"
+    },
+    {
+     "serviceItemId": "2936e015-ffda-4bd7-9a4c-e7e87bab42ff",
+     "name": "Dress",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "dress",
+     "price": "60.00"
+    },
+    {
+     "serviceItemId": "a1883deb-7a24-456b-a875-5b3c86e66e9e",
+     "name": "Saree",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "saree",
+     "price": "80.00"
+    },
+    {
+     "serviceItemId": "a939dae3-c627-41af-a0c4-459bd901dce6",
+     "name": "Kurta",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "kurta",
+     "price": "35.00"
+    },
+    {
+     "serviceItemId": "d4a868e6-b018-4c31-88b9-b03a32c7f66a",
+     "name": "Skirt",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "skirt",
+     "price": "35.00"
+    },
+    {
+     "serviceItemId": "6f1b0f08-edee-40cd-a3b3-c61a2a79e603",
+     "name": "Scarf / Dupatta",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "scarf",
+     "price": "25.00"
+    },
+    {
+     "serviceItemId": "e893a91e-9e8f-4145-a625-f1fe0baef793",
+     "name": "Bedsheet",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "bedsheet",
+     "price": "60.00"
+    },
+    {
+     "serviceItemId": "24c9c168-0d20-46ec-8f7e-2ed682c45e91",
+     "name": "Pillow Cover",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "pillow",
+     "price": "20.00"
+    }
+   ]
+  },
+  {
+   "id": "fdbab1fc-ed55-4885-ad3f-3121ba75c23b",
+   "name": "Shoe Clean",
+   "code": "SC",
+   "color": "#be123c",
+   "items": [
+    {
+     "serviceItemId": "ef9d7d59-340a-4f12-be9b-57eb55e022dc",
+     "name": "Shoes",
+     "unitType": "PAIR",
+     "piecesPerUnit": 1,
+     "icon": "shoes",
+     "price": "350.00"
+    },
+    {
+     "serviceItemId": "eaea2898-e457-4952-b631-5312575194b2",
+     "name": "Sneakers",
+     "unitType": "PAIR",
+     "piecesPerUnit": 1,
+     "icon": "sneakers",
+     "price": "400.00"
+    },
+    {
+     "serviceItemId": "c0e01d57-604b-42da-8182-81f787a5429b",
+     "name": "Handbag",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "bag",
+     "price": "500.00"
+    },
+    {
+     "serviceItemId": "74a6c427-be29-4091-9884-1ed9e218dfc7",
+     "name": "Cap",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "cap",
+     "price": "150.00"
+    }
+   ]
+  },
+  {
+   "id": "732f21ae-820b-4dcd-bac3-adeaa3f5d21f",
+   "name": "Alterations",
+   "code": "ALT",
+   "color": "#a16207",
+   "items": [
+    {
+     "serviceItemId": "8f73f626-199e-43e3-890c-f28d0b8b8913",
+     "name": "Shirt",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "shirt",
+     "price": "120.00"
+    },
+    {
+     "serviceItemId": "98b47d29-286d-4f0f-87c8-65337e8c8fcc",
+     "name": "Trouser",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "trouser",
+     "price": "150.00"
+    },
+    {
+     "serviceItemId": "a200e5bd-092f-4f38-b829-0b67acd71d5a",
+     "name": "Jeans",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "jeans",
+     "price": "150.00"
+    },
+    {
+     "serviceItemId": "0eefc1d3-1143-4033-a0db-00cb03fc5969",
+     "name": "Suit (2 pc)",
+     "unitType": "PIECE",
+     "piecesPerUnit": 2,
+     "icon": "suit",
+     "price": "450.00"
+    },
+    {
+     "serviceItemId": "1ae1e4c7-5159-4c3c-a43f-3c69bc42a3b6",
+     "name": "Blazer",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "suit",
+     "price": "350.00"
+    },
+    {
+     "serviceItemId": "ab00d3bf-9e53-4b47-93ad-06b80c04f53e",
+     "name": "Jacket",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "jacket",
+     "price": "250.00"
+    },
+    {
+     "serviceItemId": "2936e015-ffda-4bd7-9a4c-e7e87bab42ff",
+     "name": "Dress",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "dress",
+     "price": "200.00"
+    },
+    {
+     "serviceItemId": "a1883deb-7a24-456b-a875-5b3c86e66e9e",
+     "name": "Saree",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "saree",
+     "price": "200.00"
+    },
+    {
+     "serviceItemId": "a939dae3-c627-41af-a0c4-459bd901dce6",
+     "name": "Kurta",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "kurta",
+     "price": "120.00"
+    },
+    {
+     "serviceItemId": "d4a868e6-b018-4c31-88b9-b03a32c7f66a",
+     "name": "Skirt",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "skirt",
+     "price": "150.00"
+    },
+    {
+     "serviceItemId": "f7241844-0ce2-4294-9c88-1152dfce5180",
+     "name": "Curtains",
+     "unitType": "PIECE",
+     "piecesPerUnit": 1,
+     "icon": "curtain",
+     "price": "200.00"
+    }
+   ]
+  }
+ ],
+ "modifiers": [
+  {
+   "id": "b03b8674-ce2f-4262-a55d-244e26dae6d2",
+   "name": "Express Service",
+   "type": "PERCENT",
+   "value": "50.00"
+  },
+  {
+   "id": "3cf5a381-5296-418c-87bf-c241d184071c",
+   "name": "Stain Treatment",
+   "type": "FIXED",
+   "value": "40.00"
+  },
+  {
+   "id": "1d777269-b697-4323-aad7-c38a2f0af807",
+   "name": "Delicate Fabric",
+   "type": "PERCENT",
+   "value": "20.00"
+  },
+  {
+   "id": "9aab5dce-043b-4bab-bc99-d6dbf4c7193d",
+   "name": "Starch",
+   "type": "FIXED",
+   "value": "10.00"
+  },
+  {
+   "id": "2e441c9b-0c60-404a-8180-cb6408ead9d8",
+   "name": "Hanger Packing",
+   "type": "FIXED",
+   "value": "15.00"
+  }
+ ]
+}

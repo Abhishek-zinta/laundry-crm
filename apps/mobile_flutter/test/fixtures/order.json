@@ -1,0 +1,241 @@
+{
+ "id": "c0569409-cbd1-4773-8803-27139a9d204b",
+ "tenantId": "dd97f064-15f0-4200-b17c-2b1259e7eadf",
+ "storeId": "fa02e546-5a50-446e-8eab-4bde67918e39",
+ "customerId": "a327563a-387c-44fd-9e23-dc08d0fc26b1",
+ "orderNumber": "RO-2026-000132",
+ "status": "RECEIVED",
+ "priceListId": "60881364-826b-45de-9686-585257a6c4aa",
+ "subtotal": "725.00",
+ "discountType": null,
+ "discountValue": null,
+ "discountAmount": "0.00",
+ "taxName": "GST",
+ "taxRate": "18.00",
+ "taxInclusive": false,
+ "taxAmount": "130.50",
+ "grandTotal": "855.50",
+ "paidAmount": "428.00",
+ "balanceDue": "427.50",
+ "paymentStatus": "PARTIAL",
+ "totalPieces": 5,
+ "dueDate": "2026-10-09T12:30:00.000Z",
+ "deliveryMode": "STORE_PICKUP",
+ "deliveryAddressId": null,
+ "notes": null,
+ "createdById": "7fca94a0-f93f-44fd-9306-0995f99f470a",
+ "readyAt": null,
+ "deliveredAt": null,
+ "cancelledAt": null,
+ "cancelReason": null,
+ "idempotencyKey": null,
+ "createdAt": "2026-10-05T07:52:45.045Z",
+ "updatedAt": "2026-10-05T07:52:45.045Z",
+ "customer": {
+  "id": "a327563a-387c-44fd-9e23-dc08d0fc26b1",
+  "firstName": "Priya",
+  "lastName": "Sharma",
+  "phone": "9876543210",
+  "alternatePhone": null,
+  "email": null,
+  "notes": "Prefers light starch on shirts."
+ },
+ "store": {
+  "id": "fa02e546-5a50-446e-8eab-4bde67918e39",
+  "name": "Central Store",
+  "code": "CT",
+  "phone": "+918049876543",
+  "address": "44, Residency Road, Bengaluru 560025"
+ },
+ "priceList": {
+  "id": "60881364-826b-45de-9686-585257a6c4aa",
+  "name": "Retail"
+ },
+ "deliveryAddress": null,
+ "createdBy": {
+  "id": "7fca94a0-f93f-44fd-9306-0995f99f470a",
+  "name": "Anjali Rao"
+ },
+ "lines": [
+  {
+   "id": "838e4dd6-6f22-4607-99be-0385d0a2032d",
+   "tenantId": "dd97f064-15f0-4200-b17c-2b1259e7eadf",
+   "orderId": "c0569409-cbd1-4773-8803-27139a9d204b",
+   "serviceCategoryId": "1fd952e8-4c01-4d23-b06a-778709e129ce",
+   "serviceItemId": "a1883deb-7a24-456b-a875-5b3c86e66e9e",
+   "description": "Saree \u2014 Dry Cleaning",
+   "categoryName": "Dry Cleaning",
+   "itemName": "Saree",
+   "unitType": "PIECE",
+   "quantity": "2",
+   "unitPrice": "250.00",
+   "modifiersAmount": "0.00",
+   "lineTotal": "500.00",
+   "notes": null,
+   "position": 0,
+   "createdAt": "2026-10-05T07:52:45.045Z",
+   "modifiers": [],
+   "icon": "saree"
+  },
+  {
+   "id": "1174a874-71f8-40fd-9367-8c8e366baa87",
+   "tenantId": "dd97f064-15f0-4200-b17c-2b1259e7eadf",
+   "orderId": "c0569409-cbd1-4773-8803-27139a9d204b",
+   "serviceCategoryId": "b166e22b-216d-4d99-9392-cf77f27a94b4",
+   "serviceItemId": "a939dae3-c627-41af-a0c4-459bd901dce6",
+   "description": "Kurta \u2014 Wash & Iron",
+   "categoryName": "Wash & Iron",
+   "itemName": "Kurta",
+   "unitType": "PIECE",
+   "quantity": "3",
+   "unitPrice": "75.00",
+   "modifiersAmount": "0.00",
+   "lineTotal": "225.00",
+   "notes": null,
+   "position": 1,
+   "createdAt": "2026-10-05T07:52:45.045Z",
+   "modifiers": [],
+   "icon": "kurta"
+  }
+ ],
+ "garments": [
+  {
+   "id": "0e1df783-aaac-4872-b40c-79dd32c9b910",
+   "tenantId": "dd97f064-15f0-4200-b17c-2b1259e7eadf",
+   "orderId": "c0569409-cbd1-4773-8803-27139a9d204b",
+   "orderLineId": "838e4dd6-6f22-4607-99be-0385d0a2032d",
+   "tagCode": "GAR-000502",
+   "status": "RECEIVED",
+   "color": "Grey",
+   "brand": "Peter England",
+   "fabric": null,
+   "issues": [
+    "DELICATE"
+   ],
+   "damageNotes": null,
+   "specialInstructions": null,
+   "createdAt": "2026-10-05T07:52:45.045Z",
+   "updatedAt": "2026-10-05T08:41:46.698Z"
+  },
+  {
+   "id": "f6dbd8d4-fa2b-4249-a7b0-21dbea87de2a",
+   "tenantId": "dd97f064-15f0-4200-b17c-2b1259e7eadf",
+   "orderId": "c0569409-cbd1-4773-8803-27139a9d204b",
+   "orderLineId": "838e4dd6-6f22-4607-99be-0385d0a2032d",
+   "tagCode": "GAR-000503",
+   "status": "RECEIVED",
+   "color": "Cream",
+   "brand": "Raymond",
+   "fabric": "Silk",
+   "issues": [],
+   "damageNotes": null,
+   "specialInstructions": null,
+   "createdAt": "2026-10-05T07:52:45.045Z",
+   "updatedAt": "2026-10-05T08:41:46.698Z"
+  },
+  {
+   "id": "8675464e-0c95-4eea-842d-acc4657cb4e7",
+   "tenantId": "dd97f064-15f0-4200-b17c-2b1259e7eadf",
+   "orderId": "c0569409-cbd1-4773-8803-27139a9d204b",
+   "orderLineId": "1174a874-71f8-40fd-9367-8c8e366baa87",
+   "tagCode": "GAR-000504",
+   "status": "RECEIVED",
+   "color": "Olive",
+   "brand": "Zara",
+   "fabric": null,
+   "issues": [],
+   "damageNotes": null,
+   "specialInstructions": null,
+   "createdAt": "2026-10-05T07:52:45.045Z",
+   "updatedAt": "2026-10-05T08:41:46.698Z"
+  },
+  {
+   "id": "60aaa0b8-2302-419f-aa3c-6ffefab549a0",
+   "tenantId": "dd97f064-15f0-4200-b17c-2b1259e7eadf",
+   "orderId": "c0569409-cbd1-4773-8803-27139a9d204b",
+   "orderLineId": "1174a874-71f8-40fd-9367-8c8e366baa87",
+   "tagCode": "GAR-000505",
+   "status": "RECEIVED",
+   "color": "Striped",
+   "brand": null,
+   "fabric": "Silk",
+   "issues": [],
+   "damageNotes": null,
+   "specialInstructions": null,
+   "createdAt": "2026-10-05T07:52:45.045Z",
+   "updatedAt": "2026-10-05T08:41:46.698Z"
+  },
+  {
+   "id": "4ba6111e-ff07-4b98-a48b-ebc278951686",
+   "tenantId": "dd97f064-15f0-4200-b17c-2b1259e7eadf",
+   "orderId": "c0569409-cbd1-4773-8803-27139a9d204b",
+   "orderLineId": "1174a874-71f8-40fd-9367-8c8e366baa87",
+   "tagCode": "GAR-000506",
+   "status": "RECEIVED",
+   "color": "Cream",
+   "brand": null,
+   "fabric": "Cotton",
+   "issues": [
+    "COLOR_BLEED_RISK"
+   ],
+   "damageNotes": null,
+   "specialInstructions": null,
+   "createdAt": "2026-10-05T07:52:45.045Z",
+   "updatedAt": "2026-10-05T08:41:46.698Z"
+  }
+ ],
+ "statusHistory": [
+  {
+   "id": "da32ba89-7842-49e2-967d-9badc90135c4",
+   "tenantId": "dd97f064-15f0-4200-b17c-2b1259e7eadf",
+   "orderId": "c0569409-cbd1-4773-8803-27139a9d204b",
+   "fromStatus": null,
+   "toStatus": "RECEIVED",
+   "changedById": "7fca94a0-f93f-44fd-9306-0995f99f470a",
+   "changedAt": "2026-10-05T07:52:45.045Z",
+   "note": "Order created",
+   "changedBy": {
+    "id": "7fca94a0-f93f-44fd-9306-0995f99f470a",
+    "name": "Anjali Rao"
+   }
+  }
+ ],
+ "payments": [
+  {
+   "id": "e9abadb0-e35f-40cc-bd37-b9880fe29eeb",
+   "tenantId": "dd97f064-15f0-4200-b17c-2b1259e7eadf",
+   "orderId": "c0569409-cbd1-4773-8803-27139a9d204b",
+   "storeId": "fa02e546-5a50-446e-8eab-4bde67918e39",
+   "customerId": "a327563a-387c-44fd-9e23-dc08d0fc26b1",
+   "amount": "428.00",
+   "method": "CARD",
+   "reference": "XXXX1146",
+   "notes": null,
+   "status": "COMPLETED",
+   "receivedById": "7fca94a0-f93f-44fd-9306-0995f99f470a",
+   "receivedAt": "2026-10-05T07:52:45.045Z",
+   "refundedAt": null,
+   "refundedById": null,
+   "refundReason": null,
+   "idempotencyKey": null,
+   "createdAt": "2026-10-05T07:52:45.045Z",
+   "updatedAt": "2026-10-05T08:41:46.702Z",
+   "receivedBy": {
+    "id": "7fca94a0-f93f-44fd-9306-0995f99f470a",
+    "name": "Anjali Rao"
+   },
+   "refundedBy": null
+  }
+ ],
+ "tasks": [],
+ "rack": null,
+ "rackHistory": [],
+ "workflow": {
+  "allowedTransitions": [
+   "PROCESSING",
+   "CANCELLED"
+  ],
+  "nextStatus": "PROCESSING",
+  "canEditItems": true
+ }
+}

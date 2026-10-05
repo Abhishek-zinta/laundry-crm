@@ -1,0 +1,95 @@
+{
+ "user": {
+  "id": "3227366c-230a-4193-9634-c0e1ed7b929f",
+  "name": "Aarav Mehta",
+  "email": "owner@freshfold.test",
+  "phone": "+919900000001",
+  "role": "OWNER"
+ },
+ "permissions": [
+  "dashboard.view",
+  "orders.view",
+  "orders.create",
+  "orders.edit",
+  "orders.discount",
+  "orders.process",
+  "orders.deliver",
+  "orders.deliver_with_balance",
+  "orders.cancel",
+  "customers.view",
+  "customers.manage",
+  "garments.view",
+  "garments.update",
+  "payments.view",
+  "payments.create",
+  "payments.refund",
+  "catalog.view",
+  "catalog.manage",
+  "racks.view",
+  "racks.assign",
+  "racks.manage",
+  "tasks.view_all",
+  "tasks.view_own",
+  "tasks.manage",
+  "tasks.update_status",
+  "reports.view",
+  "staff.view",
+  "staff.manage",
+  "settings.manage",
+  "stores.manage",
+  "audit.view"
+ ],
+ "home": "/dashboard",
+ "allStores": true,
+ "stores": [
+  {
+   "id": "035ff9b5-ad05-4996-ab81-a6b372700204",
+   "name": "Downtown Store",
+   "code": "DT",
+   "phone": "+918041234567",
+   "address": "12, 80 Feet Road, Koramangala, Bengaluru 560034"
+  },
+  {
+   "id": "fa02e546-5a50-446e-8eab-4bde67918e39",
+   "name": "Central Store",
+   "code": "CT",
+   "phone": "+918049876543",
+   "address": "44, Residency Road, Bengaluru 560025"
+  }
+ ],
+ "tenant": {
+  "id": "dd97f064-15f0-4200-b17c-2b1259e7eadf",
+  "name": "FreshFold Laundry",
+  "slug": "freshfold",
+  "logoUrl": null,
+  "phone": "+918041234567",
+  "email": "hello@freshfold.test",
+  "address": "12, 80 Feet Road, Koramangala, Bengaluru 560034",
+  "settings": {
+   "currency": "INR",
+   "locale": "en-IN",
+   "timezone": "Asia/Kolkata",
+   "brandColor": "#0f766e",
+   "taxName": "GST",
+   "taxRate": "18.00",
+   "taxInclusive": false,
+   "taxNumber": "29ABCDE1234F1Z5",
+   "orderPrefix": "RO",
+   "invoicePrefix": "INV",
+   "garmentPrefix": "GAR",
+   "receiptFooter": "Thank you for choosing us! Please collect your garments within 30 days.",
+   "defaultTurnaroundHours": 48,
+   "skipQualityCheck": false,
+   "bookingEnabled": true,
+   "timeSlots": [
+    "08:00-10:00",
+    "10:00-12:00",
+    "12:00-14:00",
+    "14:00-16:00",
+    "16:00-18:00",
+    "18:00-20:00"
+   ],
+   "defaultPriceListId": "60881364-826b-45de-9686-585257a6c4aa"
+  }
+ }
+}

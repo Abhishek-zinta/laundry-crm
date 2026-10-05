@@ -19,6 +19,7 @@
     "test": "npm run build:shared && npm run test --workspaces --if-present",
     "db:migrate": "npm run db:migrate -w @rinseops/api",
     "db:deploy": "npm run db:deploy -w @rinseops/api",
+    "db:deploy:remote": "npm run db:deploy:remote -w @rinseops/api",
     "db:seed": "npm run db:seed -w @rinseops/api",
     "db:reset": "npm run db:reset -w @rinseops/api",
     "db:studio": "npm run db:studio -w @rinseops/api",

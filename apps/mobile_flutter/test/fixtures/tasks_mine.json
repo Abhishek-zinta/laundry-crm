@@ -1,0 +1,212 @@
+{
+ "date": "2026-10-05",
+ "items": [
+  {
+   "id": "dad681ed-e4f7-467a-9581-41ec63e8cd29",
+   "tenantId": "dd97f064-15f0-4200-b17c-2b1259e7eadf",
+   "storeId": "035ff9b5-ad05-4996-ab81-a6b372700204",
+   "orderId": null,
+   "customerId": "9eb96aa0-7cdb-4f0d-91ab-34bc39f8f70a",
+   "addressId": "a3050908-b51d-4dde-8da2-ed20f428e44c",
+   "type": "PICKUP",
+   "status": "PICKED_UP",
+   "source": "PUBLIC_BOOKING",
+   "address": "218, Jayanagar 4th Block, Bengaluru 560095",
+   "scheduledDate": "2026-10-05",
+   "timeSlot": "10:00-12:00",
+   "assignedDriverId": "3e8351e9-8df4-4083-a455-ac0f79b59fb5",
+   "requestedService": "Dry Cleaning",
+   "notes": "2 suits and some shirts",
+   "failureReason": null,
+   "completedAt": "2026-10-05T07:11:45.045Z",
+   "createdById": null,
+   "createdAt": "2026-10-05T08:41:46.709Z",
+   "updatedAt": "2026-10-05T08:41:46.709Z",
+   "customer": {
+    "id": "9eb96aa0-7cdb-4f0d-91ab-34bc39f8f70a",
+    "firstName": "Rahul",
+    "lastName": "Verma",
+    "phone": "9811223344",
+    "alternatePhone": null
+   },
+   "store": {
+    "id": "035ff9b5-ad05-4996-ab81-a6b372700204",
+    "name": "Downtown Store"
+   },
+   "assignedDriver": {
+    "id": "3e8351e9-8df4-4083-a455-ac0f79b59fb5",
+    "name": "Vikram Singh",
+    "phone": "+919900000005"
+   },
+   "order": null
+  },
+  {
+   "id": "c51ed72e-9204-4600-975b-01827e38278d",
+   "tenantId": "dd97f064-15f0-4200-b17c-2b1259e7eadf",
+   "storeId": "035ff9b5-ad05-4996-ab81-a6b372700204",
+   "orderId": null,
+   "customerId": "0ef687ef-9bc3-4d34-b591-2d3cc0c6bbe0",
+   "addressId": "deb96a2b-29f8-4442-8ee7-53deab7e6b90",
+   "type": "PICKUP",
+   "status": "OUT_FOR_PICKUP",
+   "source": "STAFF",
+   "address": "53, BTM Layout 2nd Stage, Bengaluru 560082",
+   "scheduledDate": "2026-10-05",
+   "timeSlot": "12:00-14:00",
+   "assignedDriverId": "3e8351e9-8df4-4083-a455-ac0f79b59fb5",
+   "requestedService": "Wash & Fold",
+   "notes": null,
+   "failureReason": null,
+   "completedAt": null,
+   "createdById": "10a66d65-7a22-4640-851e-eb9e529bf14b",
+   "createdAt": "2026-10-05T08:41:46.711Z",
+   "updatedAt": "2026-10-05T08:41:46.711Z",
+   "customer": {
+    "id": "0ef687ef-9bc3-4d34-b591-2d3cc0c6bbe0",
+    "firstName": "Neha",
+    "lastName": "Gupta",
+    "phone": "9731234567",
+    "alternatePhone": null
+   },
+   "store": {
+    "id": "035ff9b5-ad05-4996-ab81-a6b372700204",
+    "name": "Downtown Store"
+   },
+   "assignedDriver": {
+    "id": "3e8351e9-8df4-4083-a455-ac0f79b59fb5",
+    "name": "Vikram Singh",
+    "phone": "+919900000005"
+   },
+   "order": null
+  },
+  {
+   "id": "95d4a636-cd4f-4415-8f12-fe4a7f7741cc",
+   "tenantId": "dd97f064-15f0-4200-b17c-2b1259e7eadf",
+   "storeId": "fa02e546-5a50-446e-8eab-4bde67918e39",
+   "orderId": "9f067146-1e1c-4a1a-bdb3-5b9c2575c886",
+   "customerId": "86f200f6-3e28-4ce1-ae46-f0d24e0d1d95",
+   "addressId": "64f999c9-ac06-4b4a-bba7-b31d9318ab5a",
+   "type": "DELIVERY",
+   "status": "ASSIGNED",
+   "source": "STAFF",
+   "address": "135, Indiranagar 100 Ft Road, Bengaluru",
+   "scheduledDate": "2026-10-05",
+   "timeSlot": "16:00-18:00",
+   "assignedDriverId": "3e8351e9-8df4-4083-a455-ac0f79b59fb5",
+   "requestedService": null,
+   "notes": null,
+   "failureReason": null,
+   "completedAt": null,
+   "createdById": "b6dfca02-51b0-4a60-88fc-f347c23d8817",
+   "createdAt": "2026-10-05T08:41:46.528Z",
+   "updatedAt": "2026-10-05T08:41:46.528Z",
+   "customer": {
+    "id": "86f200f6-3e28-4ce1-ae46-f0d24e0d1d95",
+    "firstName": "Arjun",
+    "lastName": "Reddy",
+    "phone": "9845012345",
+    "alternatePhone": null
+   },
+   "store": {
+    "id": "fa02e546-5a50-446e-8eab-4bde67918e39",
+    "name": "Central Store"
+   },
+   "assignedDriver": {
+    "id": "3e8351e9-8df4-4083-a455-ac0f79b59fb5",
+    "name": "Vikram Singh",
+    "phone": "+919900000005"
+   },
+   "order": {
+    "id": "9f067146-1e1c-4a1a-bdb3-5b9c2575c886",
+    "orderNumber": "RO-2026-000116",
+    "status": "READY",
+    "balanceDue": "454.00",
+    "totalPieces": 3
+   }
+  },
+  {
+   "id": "c0bbfb90-0ec4-4e14-9f35-51d41479e48b",
+   "tenantId": "dd97f064-15f0-4200-b17c-2b1259e7eadf",
+   "storeId": "035ff9b5-ad05-4996-ab81-a6b372700204",
+   "orderId": null,
+   "customerId": "40260045-4033-44a8-af13-7dc292e9dce7",
+   "addressId": "754c7ee0-ec2f-4c23-a272-1c1b36446195",
+   "type": "PICKUP",
+   "status": "ASSIGNED",
+   "source": "PUBLIC_BOOKING",
+   "address": "53, Electronic City Phase 1, Bengaluru 560091",
+   "scheduledDate": "2026-10-05",
+   "timeSlot": "16:00-18:00",
+   "assignedDriverId": "3e8351e9-8df4-4083-a455-ac0f79b59fb5",
+   "requestedService": "Wash & Iron",
+   "notes": "Ring the bell twice",
+   "failureReason": null,
+   "completedAt": null,
+   "createdById": null,
+   "createdAt": "2026-10-05T08:41:46.713Z",
+   "updatedAt": "2026-10-05T08:41:46.713Z",
+   "customer": {
+    "id": "40260045-4033-44a8-af13-7dc292e9dce7",
+    "firstName": "Amit",
+    "lastName": "Patel",
+    "phone": "9823456781",
+    "alternatePhone": null
+   },
+   "store": {
+    "id": "035ff9b5-ad05-4996-ab81-a6b372700204",
+    "name": "Downtown Store"
+   },
+   "assignedDriver": {
+    "id": "3e8351e9-8df4-4083-a455-ac0f79b59fb5",
+    "name": "Vikram Singh",
+    "phone": "+919900000005"
+   },
+   "order": null
+  },
+  {
+   "id": "7d68cb58-6913-4e3c-9800-0014a804766b",
+   "tenantId": "dd97f064-15f0-4200-b17c-2b1259e7eadf",
+   "storeId": "035ff9b5-ad05-4996-ab81-a6b372700204",
+   "orderId": "c7ef1b2b-9f4e-4ae7-a439-20d16671a130",
+   "customerId": "14736567-d72b-4f98-b4ec-e86335f1c8f1",
+   "addressId": "4ee6f522-fd40-4125-abe9-80b4572f1200",
+   "type": "DELIVERY",
+   "status": "ASSIGNED",
+   "source": "STAFF",
+   "address": "68, Richmond Town, Bengaluru",
+   "scheduledDate": "2026-10-05",
+   "timeSlot": "18:00-20:00",
+   "assignedDriverId": "3e8351e9-8df4-4083-a455-ac0f79b59fb5",
+   "requestedService": null,
+   "notes": null,
+   "failureReason": null,
+   "completedAt": null,
+   "createdById": "b6dfca02-51b0-4a60-88fc-f347c23d8817",
+   "createdAt": "2026-10-05T08:41:46.404Z",
+   "updatedAt": "2026-10-05T08:41:46.404Z",
+   "customer": {
+    "id": "14736567-d72b-4f98-b4ec-e86335f1c8f1",
+    "firstName": "Farhan",
+    "lastName": "Sheikh",
+    "phone": "9739988776",
+    "alternatePhone": null
+   },
+   "store": {
+    "id": "035ff9b5-ad05-4996-ab81-a6b372700204",
+    "name": "Downtown Store"
+   },
+   "assignedDriver": {
+    "id": "3e8351e9-8df4-4083-a455-ac0f79b59fb5",
+    "name": "Vikram Singh",
+    "phone": "+919900000005"
+   },
+   "order": {
+    "id": "c7ef1b2b-9f4e-4ae7-a439-20d16671a130",
+    "orderNumber": "RO-2026-000106",
+    "status": "READY",
+    "balanceDue": "414.54",
+    "totalPieces": 10
+   }
+  }
+ ]
+}

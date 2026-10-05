@@ -1,0 +1,297 @@
+{
+ "storeId": "035ff9b5-ad05-4996-ab81-a6b372700204",
+ "racks": [
+  {
+   "id": "d138ba2d-4286-4b5b-9ad0-2b83c655c4fd",
+   "name": "Rack A",
+   "code": "A",
+   "description": null,
+   "isActive": true,
+   "displayOrder": 0,
+   "slots": [
+    {
+     "id": "f0725988-4583-4e52-9054-dd3567235d91",
+     "code": "A01",
+     "capacity": 1,
+     "isActive": true,
+     "available": false,
+     "orders": [
+      {
+       "assignmentId": "580a17f0-ae3b-4d45-bac0-cfe2f6530f5e",
+       "assignedAt": "2026-10-04T17:45:00.000Z",
+       "id": "069ec3ca-4448-4718-b3ea-553f2f9fee8b",
+       "orderNumber": "RO-2026-000101",
+       "status": "READY",
+       "balanceDue": "598.50",
+       "totalPieces": 5,
+       "dueDate": "2026-10-05T12:30:00.000Z",
+       "customer": {
+        "id": "86f200f6-3e28-4ce1-ae46-f0d24e0d1d95",
+        "firstName": "Arjun",
+        "lastName": "Reddy",
+        "phone": "9845012345"
+       },
+       "customerName": "Arjun Reddy"
+      }
+     ]
+    },
+    {
+     "id": "2fbe0dd6-46be-4264-a0d7-a882ea4d5ddf",
+     "code": "A02",
+     "capacity": 1,
+     "isActive": true,
+     "available": false,
+     "orders": [
+      {
+       "assignmentId": "0b3514a5-f324-43e5-8581-c896cb53d26b",
+       "assignedAt": "2026-10-04T01:19:00.000Z",
+       "id": "c7ef1b2b-9f4e-4ae7-a439-20d16671a130",
+       "orderNumber": "RO-2026-000106",
+       "status": "READY",
+       "balanceDue": "414.54",
+       "totalPieces": 10,
+       "dueDate": "2026-10-04T12:30:00.000Z",
+       "customer": {
+        "id": "14736567-d72b-4f98-b4ec-e86335f1c8f1",
+        "firstName": "Farhan",
+        "lastName": "Sheikh",
+        "phone": "9739988776"
+       },
+       "customerName": "Farhan Sheikh"
+      }
+     ]
+    },
+    {
+     "id": "5c491aa4-0565-4c25-92b2-8b560b802847",
+     "code": "A03",
+     "capacity": 1,
+     "isActive": true,
+     "available": true,
+     "orders": []
+    },
+    {
+     "id": "85ecc376-d235-431e-88e5-90f0d6a1bbfd",
+     "code": "A04",
+     "capacity": 1,
+     "isActive": true,
+     "available": false,
+     "orders": [
+      {
+       "assignmentId": "bab9242b-702c-4399-b97c-2cef7da43641",
+       "assignedAt": "2026-10-04T02:14:45.000Z",
+       "id": "6b89210c-7865-46e8-b89a-b7091e8d47a1",
+       "orderNumber": "RO-2026-000107",
+       "status": "READY",
+       "balanceDue": "0.00",
+       "totalPieces": 2,
+       "dueDate": "2026-10-04T12:30:00.000Z",
+       "customer": {
+        "id": "848406f5-8051-43bf-9b5c-758a940a2c3f",
+        "firstName": "Sneha",
+        "lastName": "Iyer",
+        "phone": "9900123456"
+       },
+       "customerName": "Sneha Iyer"
+      }
+     ]
+    },
+    {
+     "id": "9409186d-846e-4120-a518-49f46d04d6ed",
+     "code": "A05",
+     "capacity": 1,
+     "isActive": true,
+     "available": false,
+     "orders": [
+      {
+       "assignmentId": "93bdb7d7-cdfd-42c4-81ed-1677c00b5e03",
+       "assignedAt": "2026-10-05T02:02:45.000Z",
+       "id": "7a51c483-b823-4064-b16d-0672a1a2e9a3",
+       "orderNumber": "RO-2026-000111",
+       "status": "READY",
+       "balanceDue": "0.00",
+       "totalPieces": 6,
+       "dueDate": "2026-10-05T11:30:00.000Z",
+       "customer": {
+        "id": "a327563a-387c-44fd-9e23-dc08d0fc26b1",
+        "firstName": "Priya",
+        "lastName": "Sharma",
+        "phone": "9876543210"
+       },
+       "customerName": "Priya Sharma"
+      }
+     ]
+    },
+    {
+     "id": "66739e64-e9b3-4715-9947-016c688461c2",
+     "code": "A06",
+     "capacity": 1,
+     "isActive": true,
+     "available": false,
+     "orders": [
+      {
+       "assignmentId": "b8e7437d-90ad-4797-ba26-d9237ec7d4ae",
+       "assignedAt": "2026-10-05T08:40:45.045Z",
+       "id": "1a930969-91b7-4b65-b5aa-a3f758053d00",
+       "orderNumber": "RO-2026-000118",
+       "status": "READY",
+       "balanceDue": "280.50",
+       "totalPieces": 2,
+       "dueDate": "2026-10-06T12:30:00.000Z",
+       "customer": {
+        "id": "2c2370a3-cdac-4a80-9b3f-e8f3472d2bb2",
+        "firstName": "Aditya",
+        "lastName": "Deshmukh",
+        "phone": "9632587410"
+       },
+       "customerName": "Aditya Deshmukh"
+      }
+     ]
+    },
+    {
+     "id": "badf6a50-3548-432e-828a-0bd6eaaacf44",
+     "code": "A07",
+     "capacity": 1,
+     "isActive": true,
+     "available": true,
+     "orders": []
+    },
+    {
+     "id": "ad80c407-effd-41dd-987f-8f5f46f54071",
+     "code": "A08",
+     "capacity": 1,
+     "isActive": true,
+     "available": true,
+     "orders": []
+    },
+    {
+     "id": "b480a37f-37eb-45f4-a60a-98aa599c0c16",
+     "code": "A09",
+     "capacity": 1,
+     "isActive": true,
+     "available": true,
+     "orders": []
+    },
+    {
+     "id": "0db1a6db-ceac-4453-95da-2ea62210b1fa",
+     "code": "A10",
+     "capacity": 1,
+     "isActive": true,
+     "available": true,
+     "orders": []
+    },
+    {
+     "id": "bea4bb69-c24b-47fe-9adf-a05cbfe987b7",
+     "code": "A11",
+     "capacity": 1,
+     "isActive": true,
+     "available": true,
+     "orders": []
+    },
+    {
+     "id": "70e95066-5fdd-4500-aa5a-5fdf0c797d4e",
+     "code": "A12",
+     "capacity": 1,
+     "isActive": true,
+     "available": true,
+     "orders": []
+    }
+   ]
+  },
+  {
+   "id": "63e8d3c6-a5de-4eb0-acb5-f6190dc4d64d",
+   "name": "Rack B",
+   "code": "B",
+   "description": null,
+   "isActive": true,
+   "displayOrder": 1,
+   "slots": [
+    {
+     "id": "4e8a8bf9-7ac2-4f44-b31c-af774f0ee694",
+     "code": "B01",
+     "capacity": 2,
+     "isActive": true,
+     "available": true,
+     "orders": []
+    },
+    {
+     "id": "880fadfb-1da0-4e6a-804f-8531714d508e",
+     "code": "B02",
+     "capacity": 2,
+     "isActive": true,
+     "available": true,
+     "orders": []
+    },
+    {
+     "id": "ab30b500-6ff8-468b-9b13-61d6cd58199d",
+     "code": "B03",
+     "capacity": 2,
+     "isActive": true,
+     "available": true,
+     "orders": []
+    },
+    {
+     "id": "fcbc2135-ade7-4829-973f-48826b46bdf6",
+     "code": "B04",
+     "capacity": 2,
+     "isActive": true,
+     "available": true,
+     "orders": []
+    },
+    {
+     "id": "1e3d2fe0-9300-4257-9b3c-2bb7dfcca03c",
+     "code": "B05",
+     "capacity": 2,
+     "isActive": true,
+     "available": true,
+     "orders": []
+    },
+    {
+     "id": "64bd037d-218e-41f4-ade7-9b6f48b6799d",
+     "code": "B06",
+     "capacity": 2,
+     "isActive": true,
+     "available": true,
+     "orders": []
+    },
+    {
+     "id": "185f92d5-2789-476f-acca-d334f7ae1e85",
+     "code": "B07",
+     "capacity": 2,
+     "isActive": true,
+     "available": true,
+     "orders": []
+    },
+    {
+     "id": "0e2a02d0-1377-4433-9aa5-bfdf565014e2",
+     "code": "B08",
+     "capacity": 2,
+     "isActive": true,
+     "available": true,
+     "orders": []
+    },
+    {
+     "id": "35f118da-46e1-4d27-bd2f-392e533b2aca",
+     "code": "B09",
+     "capacity": 2,
+     "isActive": true,
+     "available": true,
+     "orders": []
+    },
+    {
+     "id": "c1a0b180-85ae-4401-a0c7-fbb95a920e04",
+     "code": "B10",
+     "capacity": 2,
+     "isActive": true,
+     "available": true,
+     "orders": []
+    }
+   ]
+  }
+ ],
+ "stats": {
+  "slots": 22,
+  "occupied": 5,
+  "capacity": 32,
+  "used": 5
+ }
+}

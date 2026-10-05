@@ -1,0 +1,31 @@
+{
+ "items": [
+  {
+   "id": "a327563a-387c-44fd-9e23-dc08d0fc26b1",
+   "firstName": "Priya",
+   "lastName": "Sharma",
+   "phone": "9876543210",
+   "email": null,
+   "createdAt": "2026-08-08T08:41:45.045Z",
+   "orderCount": 9,
+   "totalSpent": "6255.53",
+   "balance": "2611.09",
+   "lastOrderAt": "2026-10-05T07:52:45.045Z"
+  },
+  {
+   "id": "a4609163-da2a-488a-a6cd-dfdffef1cad3",
+   "firstName": "Manoj",
+   "lastName": "Hegde",
+   "phone": "9449012876",
+   "email": "manoj.hegde@example.com",
+   "createdAt": "2026-07-20T08:41:45.045Z",
+   "orderCount": 9,
+   "totalSpent": "6972.62",
+   "balance": "0.00",
+   "lastOrderAt": "2026-10-05T07:17:45.045Z"
+  }
+ ],
+ "total": 25,
+ "page": 1,
+ "pageSize": 2
+}

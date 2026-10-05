@@ -1,0 +1,57 @@
+{
+ "items": [
+  {
+   "id": "c0569409-cbd1-4773-8803-27139a9d204b",
+   "orderNumber": "RO-2026-000132",
+   "status": "RECEIVED",
+   "paymentStatus": "PARTIAL",
+   "grandTotal": "855.50",
+   "paidAmount": "428.00",
+   "balanceDue": "427.50",
+   "totalPieces": 5,
+   "dueDate": "2026-10-09T12:30:00.000Z",
+   "createdAt": "2026-10-05T07:52:45.045Z",
+   "deliveryMode": "STORE_PICKUP",
+   "customer": {
+    "id": "a327563a-387c-44fd-9e23-dc08d0fc26b1",
+    "firstName": "Priya",
+    "lastName": "Sharma",
+    "phone": "9876543210"
+   },
+   "store": {
+    "id": "fa02e546-5a50-446e-8eab-4bde67918e39",
+    "name": "Central Store",
+    "code": "CT"
+   },
+   "rack": null
+  },
+  {
+   "id": "a7c23001-9e90-4aba-bb00-6e42e0759005",
+   "orderNumber": "RO-2026-000131",
+   "status": "PROCESSING",
+   "paymentStatus": "PAID",
+   "grandTotal": "424.80",
+   "paidAmount": "424.80",
+   "balanceDue": "0.00",
+   "totalPieces": 6,
+   "dueDate": "2026-10-07T12:30:00.000Z",
+   "createdAt": "2026-10-05T07:17:45.045Z",
+   "deliveryMode": "STORE_PICKUP",
+   "customer": {
+    "id": "a4609163-da2a-488a-a6cd-dfdffef1cad3",
+    "firstName": "Manoj",
+    "lastName": "Hegde",
+    "phone": "9449012876"
+   },
+   "store": {
+    "id": "035ff9b5-ad05-4996-ab81-a6b372700204",
+    "name": "Downtown Store",
+    "code": "DT"
+   },
+   "rack": null
+  }
+ ],
+ "total": 132,
+ "page": 1,
+ "pageSize": 2
+}

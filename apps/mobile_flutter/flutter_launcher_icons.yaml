@@ -1,0 +1,11 @@
+# Generates the launcher icons from assets/branding (rendered by tool/render_brand.py).
+# Regenerate: dart run flutter_launcher_icons
+flutter_launcher_icons:
+  image_path: assets/branding/icon.png
+  android: true
+  ios: true
+  remove_alpha_ios: true
+  min_sdk_android: 21
+  adaptive_icon_background: "#0F766E"
+  adaptive_icon_foreground: assets/branding/icon_foreground.png
+  adaptive_icon_monochrome: assets/branding/icon_foreground.png

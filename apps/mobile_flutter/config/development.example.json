@@ -1,0 +1,4 @@
+{
+  "APP_ENV": "development",
+  "API_BASE_URL": "http://192.168.x.x:4000/api/v1"
+}

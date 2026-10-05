@@ -1,0 +1,93 @@
+{
+ "id": "a327563a-387c-44fd-9e23-dc08d0fc26b1",
+ "tenantId": "dd97f064-15f0-4200-b17c-2b1259e7eadf",
+ "firstName": "Priya",
+ "lastName": "Sharma",
+ "phone": "9876543210",
+ "alternatePhone": null,
+ "email": null,
+ "notes": "Prefers light starch on shirts.",
+ "priceListId": null,
+ "archivedAt": null,
+ "createdAt": "2026-08-08T08:41:45.045Z",
+ "updatedAt": "2026-10-05T08:41:45.058Z",
+ "addresses": [
+  {
+   "id": "9eb674c7-6a1a-4862-82b5-49d61692170a",
+   "tenantId": "dd97f064-15f0-4200-b17c-2b1259e7eadf",
+   "customerId": "a327563a-387c-44fd-9e23-dc08d0fc26b1",
+   "label": "Home",
+   "addressLine1": "195, Koramangala 5th Block",
+   "addressLine2": null,
+   "landmark": null,
+   "city": "Bengaluru",
+   "state": "Karnataka",
+   "postalCode": "560057",
+   "country": "India",
+   "latitude": null,
+   "longitude": null,
+   "isDefault": true,
+   "createdAt": "2026-10-05T08:41:45.058Z",
+   "updatedAt": "2026-10-05T08:41:45.058Z"
+  }
+ ],
+ "priceList": null,
+ "stats": {
+  "totalOrders": 9,
+  "totalSpent": "6255.53",
+  "outstanding": "2611.09",
+  "lastOrderAt": "2026-10-05T07:52:45.045Z"
+ },
+ "openOrders": [
+  {
+   "id": "7a51c483-b823-4064-b16d-0672a1a2e9a3",
+   "orderNumber": "RO-2026-000111",
+   "status": "READY",
+   "dueDate": "2026-10-05T11:30:00.000Z",
+   "grandTotal": "403.56",
+   "balanceDue": "0.00",
+   "paymentStatus": "PAID",
+   "totalPieces": 6,
+   "rack": {
+    "slot": "A05",
+    "rackName": "Rack A"
+   }
+  },
+  {
+   "id": "5d157a6f-a2ed-4c1c-953d-1e4ce3b1b7bc",
+   "orderNumber": "RO-2026-000117",
+   "status": "QUALITY_CHECK",
+   "dueDate": "2026-10-06T12:30:00.000Z",
+   "grandTotal": "1711.00",
+   "balanceDue": "1711.00",
+   "paymentStatus": "UNPAID",
+   "totalPieces": 4,
+   "rack": null
+  },
+  {
+   "id": "a786c23b-708f-4930-bb82-c361fa7b9381",
+   "orderNumber": "RO-2026-000119",
+   "status": "READY",
+   "dueDate": "2026-10-07T12:30:00.000Z",
+   "grandTotal": "472.59",
+   "balanceDue": "472.59",
+   "paymentStatus": "UNPAID",
+   "totalPieces": 1,
+   "rack": {
+    "slot": "A03",
+    "rackName": "Rack A"
+   }
+  },
+  {
+   "id": "c0569409-cbd1-4773-8803-27139a9d204b",
+   "orderNumber": "RO-2026-000132",
+   "status": "RECEIVED",
+   "dueDate": "2026-10-09T12:30:00.000Z",
+   "grandTotal": "855.50",
+   "balanceDue": "427.50",
+   "paymentStatus": "PARTIAL",
+   "totalPieces": 5,
+   "rack": null
+  }
+ ]
+}

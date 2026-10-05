@@ -1,0 +1,95 @@
+{
+ "items": [
+  {
+   "id": "21edde02-e91a-4549-b790-0f35a5a976e6",
+   "tenantId": "dd97f064-15f0-4200-b17c-2b1259e7eadf",
+   "orderId": "c2d5e0cb-bfe8-47e2-8409-b1abd9a27286",
+   "orderLineId": "da7ead40-adef-4d58-b9b5-c45ec18645a7",
+   "tagCode": "GAR-000004",
+   "status": "DELIVERED",
+   "color": "Maroon",
+   "brand": "Manyavar",
+   "fabric": "Polyester",
+   "issues": [],
+   "damageNotes": null,
+   "specialInstructions": "Light starch",
+   "createdAt": "2026-08-24T06:07:00.000Z",
+   "updatedAt": "2026-10-05T08:41:45.170Z",
+   "orderLine": {
+    "description": "Shirt \u2014 Wash & Iron",
+    "itemName": "Shirt",
+    "categoryName": "Wash & Iron"
+   },
+   "order": {
+    "id": "c2d5e0cb-bfe8-47e2-8409-b1abd9a27286",
+    "orderNumber": "RO-2026-000002",
+    "status": "DELIVERED",
+    "dueDate": "2026-08-27T12:30:00.000Z",
+    "paymentStatus": "PAID",
+    "storeId": "fa02e546-5a50-446e-8eab-4bde67918e39",
+    "store": {
+     "id": "fa02e546-5a50-446e-8eab-4bde67918e39",
+     "name": "Central Store"
+    },
+    "customer": {
+     "id": "dfe461f9-7140-43a2-a402-f0d08cd158e1",
+     "firstName": "Shreya",
+     "lastName": "Ghosh",
+     "phone": "9008123459"
+    },
+    "balanceDue": "0.00",
+    "rack": null
+   }
+  },
+  {
+   "id": "6bf6a821-aeda-425a-a5cb-c3c1fdec3f87",
+   "tenantId": "dd97f064-15f0-4200-b17c-2b1259e7eadf",
+   "orderId": "c2d5e0cb-bfe8-47e2-8409-b1abd9a27286",
+   "orderLineId": "da7ead40-adef-4d58-b9b5-c45ec18645a7",
+   "tagCode": "GAR-000005",
+   "status": "DELIVERED",
+   "color": "Cream",
+   "brand": null,
+   "fabric": null,
+   "issues": [],
+   "damageNotes": null,
+   "specialInstructions": "Light starch",
+   "createdAt": "2026-08-24T06:07:00.000Z",
+   "updatedAt": "2026-10-05T08:41:45.170Z",
+   "orderLine": {
+    "description": "Shirt \u2014 Wash & Iron",
+    "itemName": "Shirt",
+    "categoryName": "Wash & Iron"
+   },
+   "order": {
+    "id": "c2d5e0cb-bfe8-47e2-8409-b1abd9a27286",
+    "orderNumber": "RO-2026-000002",
+    "status": "DELIVERED",
+    "dueDate": "2026-08-27T12:30:00.000Z",
+    "paymentStatus": "PAID",
+    "storeId": "fa02e546-5a50-446e-8eab-4bde67918e39",
+    "store": {
+     "id": "fa02e546-5a50-446e-8eab-4bde67918e39",
+     "name": "Central Store"
+    },
+    "customer": {
+     "id": "dfe461f9-7140-43a2-a402-f0d08cd158e1",
+     "firstName": "Shreya",
+     "lastName": "Ghosh",
+     "phone": "9008123459"
+    },
+    "balanceDue": "0.00",
+    "rack": null
+   }
+  }
+ ],
+ "total": 506,
+ "page": 1,
+ "pageSize": 2,
+ "statusCounts": {
+  "PROCESSING": 35,
+  "RECEIVED": 27,
+  "READY": 38,
+  "QUALITY_CHECK": 23
+ }
+}
