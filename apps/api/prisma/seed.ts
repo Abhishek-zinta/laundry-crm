@@ -145,6 +145,10 @@ const BASKETS: Basket[] = [
 ];
 
 async function main() {
+  // Demo accounts use a published password: never create them on a real deployment.
+  if (process.env.NODE_ENV === 'production') {
+    throw new Error('Refusing to seed demo data with NODE_ENV=production.');
+  }
   console.log('Seeding RinseOps demo data…');
   await prisma.tenant.deleteMany({ where: { slug: SLUG } });
   await prisma.user.deleteMany({ where: { email: { in: DEMO_EMAILS } } });

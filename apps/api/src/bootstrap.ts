@@ -1,7 +1,7 @@
 import { INestApplication } from '@nestjs/common';
 import cookieParser from 'cookie-parser';
 import helmet from 'helmet';
-import { allowedOrigins } from './config/env';
+import { allowedOrigins, trustProxySetting } from './config/env';
 
 export const API_PREFIX = 'api/v1';
 
@@ -12,7 +12,8 @@ export function configureApp(app: INestApplication) {
   app.use(cookieParser());
   app.enableCors({ origin: allowedOrigins(), credentials: true });
   const instance = app.getHttpAdapter().getInstance() as { set?: (k: string, v: unknown) => void };
-  // Behind the Next.js proxy / a load balancer; needed for correct client IPs.
-  instance.set?.('trust proxy', 'loopback');
+  // Which reverse proxies (Next.js, nginx, a load balancer) may report the client IP.
+  // Client IPs drive login rate limiting and audit logs; see TRUST_PROXY.
+  instance.set?.('trust proxy', trustProxySetting());
   app.enableShutdownHooks();
 }

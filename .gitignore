@@ -13,6 +13,11 @@ npm-debug.log*
 .turbo/
 next-env.d.ts
 
+# Android signing material (never commit)
+*.jks
+*.keystore
+keystore.properties
+
 # Local Claude Code skills (Neon tooling), not part of the project
 .claude/
 skills-lock.json

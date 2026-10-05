@@ -70,6 +70,10 @@ The seed creates **FreshFold Laundry** with two stores (Downtown and Central) an
 | `SESSION_TTL_DAYS`  | Session lifetime                                               |
 | `COOKIE_SECURE`     | `true` behind HTTPS so the session cookie gets `Secure`        |
 | `API_INTERNAL_URL`  | Where the Next.js server proxies `/api/v1/*`                   |
+| `NODE_ENV`          | `production` for deployments (enables the production checks)   |
+| `TRUST_PROXY`       | Proxies allowed to set `X-Forwarded-For` (`loopback`, hop count, IPs/CIDRs) |
+| `MOBILE_JWT_SECRET` | Signs mobile access tokens; required, random, 32+ chars in production |
+| `MOBILE_ACCESS_TTL_MINUTES` / `MOBILE_REFRESH_TTL_DAYS` | Mobile token lifetimes (15 min / 30 days) |
 
 `.env` is git-ignored; never commit real secrets.
 
@@ -89,7 +93,11 @@ The seed creates **FreshFold Laundry** with two stores (Downtown and Central) an
 | `npm run db:reset`     | Drop, re-migrate and re-seed the dev database                |
 | `npm run db:studio`    | Prisma Studio                                                |
 
-Production: `npm run build`, then `npm run start -w @rinseops/api` and `npm run start -w @rinseops/web`.
+Production: `npm run build`, apply migrations with `npm run db:deploy` (needs the dev
+dependency `prisma`, so run it from the build/release environment), then start the API with
+`npm run start:prod -w @rinseops/api` (plain `node dist/main.js`; variables come from the
+environment, not `.env`) and the web app with `npm run start -w @rinseops/web`. Never run
+`db:seed` against production: it creates demo accounts with a published password.
 
 Tests need `TEST_DATABASE_URL` pointing at an empty database; the suite applies migrations and truncates it.
 
