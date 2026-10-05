@@ -97,12 +97,20 @@ export class AuthService {
     if (!(await verifyPassword(user.passwordHash, input.currentPassword))) {
       throw new AppError('INVALID_PASSWORD', 'Your current password is incorrect.', HttpStatus.BAD_REQUEST);
     }
+    // Keep the caller signed in on this device; sign out every other web and app session.
+    const currentFamily =
+      ctx.authType === 'mobile'
+        ? (await this.prisma.mobileSession.findUnique({ where: { id: ctx.sessionId }, select: { familyId: true } }))?.familyId
+        : undefined;
     await this.prisma.$transaction([
       this.prisma.user.update({ where: { id: user.id }, data: { passwordHash: await hashPassword(input.newPassword) } }),
-      // Sign out every other session.
       this.prisma.session.updateMany({
-        where: { userId: user.id, revokedAt: null, NOT: { id: ctx.sessionId } },
+        where: { userId: user.id, revokedAt: null, ...(ctx.authType === 'cookie' ? { NOT: { id: ctx.sessionId } } : {}) },
         data: { revokedAt: new Date() },
+      }),
+      this.prisma.mobileSession.updateMany({
+        where: { userId: user.id, revokedAt: null, ...(currentFamily ? { NOT: { familyId: currentFamily } } : {}) },
+        data: { revokedAt: new Date(), revokedReason: 'PASSWORD_CHANGED' },
       }),
     ]);
   }

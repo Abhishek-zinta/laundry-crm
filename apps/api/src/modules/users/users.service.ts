@@ -6,6 +6,7 @@ import { AuditService } from '../../common/audit/audit.service';
 import { badRequest, conflict, forbidden, notFound } from '../../common/errors/app-error';
 import { PrismaService } from '../../common/prisma/prisma.service';
 import { hashPassword } from '../auth/password';
+import { revokeMobileSessionsForUser } from '../mobile-auth/mobile-auth.service';
 
 const STAFF_SELECT = {
   id: true,
@@ -121,6 +122,7 @@ export class UsersService {
       if (input.status === 'INACTIVE' || input.password) {
         // Deactivation or a password reset signs the user out everywhere.
         await tx.session.updateMany({ where: { userId: id, revokedAt: null }, data: { revokedAt: new Date() } });
+        await revokeMobileSessionsForUser(tx, id, input.status === 'INACTIVE' ? 'ACCOUNT_INACTIVE' : 'PASSWORD_CHANGED');
       }
 
       if (input.role && input.role !== user.role) {

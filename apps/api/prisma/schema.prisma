@@ -170,6 +170,7 @@ model Tenant {
   tasks             PickupDeliveryTask[]
   auditLogs         AuditLog[]
   counters          TenantCounter[]
+  mobileSessions    MobileSession[]
 }
 
 model TenantSettings {
@@ -246,6 +247,7 @@ model User {
   tenant            Tenant                 @relation(fields: [tenantId], references: [id], onDelete: Cascade)
   stores            UserStore[]
   sessions          Session[]
+  mobileSessions    MobileSession[]
   ordersCreated     Order[]                @relation("OrderCreatedBy")
   statusChanges     OrderStatusHistory[]
   garmentChanges    GarmentStatusHistory[]
@@ -288,6 +290,33 @@ model Session {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId])
+}
+
+/// Native app (Android) refresh sessions. Each refresh rotates the token: the old
+/// row is revoked with reason ROTATED and a new row joins the same family. Presenting
+/// an already-rotated token revokes the whole family (token theft detection).
+/// Only a SHA-256 hash of the refresh token is stored.
+model MobileSession {
+  id               String    @id @default(uuid()) @db.Uuid
+  tenantId         String    @db.Uuid
+  userId           String    @db.Uuid
+  familyId         String    @db.Uuid
+  refreshTokenHash String    @unique
+  expiresAt        DateTime  @db.Timestamptz(3)
+  revokedAt        DateTime? @db.Timestamptz(3)
+  revokedReason    String?
+  replacedById     String?   @db.Uuid
+  deviceName       String?
+  userAgent        String?
+  ipAddress        String?
+  lastUsedAt       DateTime  @default(now()) @db.Timestamptz(3)
+  createdAt        DateTime  @default(now()) @db.Timestamptz(3)
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([familyId])
 }
 
 // ---------------------------------------------------------------------------

@@ -10,6 +10,7 @@ import { OriginCheckMiddleware } from './common/http/origin.middleware';
 import { PrismaModule } from './common/prisma/prisma.module';
 import { AuditApiModule } from './modules/audit/audit-api.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { MobileAuthModule } from './modules/mobile-auth/mobile-auth.module';
 import { CatalogModule } from './modules/catalog/catalog.module';
 import { CustomersModule } from './modules/customers/customers.module';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
@@ -38,6 +39,7 @@ import { HealthController } from './health.controller';
     AuditModule,
     WorkflowModule,
     AuthModule,
+    MobileAuthModule,
     TenantsModule,
     UsersModule,
     CustomersModule,

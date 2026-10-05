@@ -12,3 +12,7 @@ npm-debug.log*
 .DS_Store
 .turbo/
 next-env.d.ts
+
+# Local Claude Code skills (Neon tooling), not part of the project
+.claude/
+skills-lock.json

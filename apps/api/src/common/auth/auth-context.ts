@@ -3,7 +3,10 @@ import { forbidden } from '../errors/app-error';
 
 /** Authenticated request context, resolved from the session cookie on every request. */
 export interface AuthContext {
+  /** Web cookie session id, or native-app MobileSession id. */
   sessionId: string;
+  /** How the caller authenticated: web cookie or native-app bearer token. */
+  authType: 'cookie' | 'mobile';
   userId: string;
   tenantId: string;
   name: string;
